@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">ProjectErato</string>
+    <string name="boton_con_imagen">Botón con imagen</string>
+    <string name="banderas">Banderas</string>
+    <string name="capitales">Capitales</string>
+    <string name="pa_ses">Países</string>
+    <string name="botonvolumen">BotonVolumen</string>
+    <string name="botonmenu">BotonMenu</string>
+    <string name="botonvolver">BotonVolver</string>
+    <string name="iniciar_sesi_n">Iniciar sesión</string>
 </resources>
