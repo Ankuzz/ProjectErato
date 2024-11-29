@@ -5,15 +5,74 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoapp"
+    android:scaleType="centerCrop"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <Button
+        android:id="@+id/buttonBanderas"
+        android:layout_width="191dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/button_background"
+        android:text="@string/banderas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonCapitales"
+        android:layout_width="191dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/button_background"
+        android:text="@string/capitales"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBanderas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonPaises"
+        android:layout_width="191dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/button_background"
+        android:text="@string/pa_ses"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCapitales"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonVolumen"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_background"
+        android:contentDescription="@string/botonvolumen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconovolumenencendido" />
+
+    <ImageButton
+        android:id="@+id/imageButtonMenu"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_background"
+        android:contentDescription="@string/botonmenu"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menulineas"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
