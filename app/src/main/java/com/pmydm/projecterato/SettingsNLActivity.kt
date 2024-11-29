@@ -13,7 +13,7 @@ class SettingsNLActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_settingsnl)
 
-        val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver);
+        val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver)
 
         imageButtonVolver.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
