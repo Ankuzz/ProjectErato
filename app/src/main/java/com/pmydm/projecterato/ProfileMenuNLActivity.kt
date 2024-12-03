@@ -4,15 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
-class SettingsNLActivity : AppCompatActivity(){
+class ProfileMenuNLActivity : AppCompatActivity(){
     private var volumen=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_settingsnl)
+        setContentView(R.layout.activity_profile_menu_nl)
 
         val imageButtonVolumen: ImageButton = findViewById(R.id.imageButtonVolumen)
 

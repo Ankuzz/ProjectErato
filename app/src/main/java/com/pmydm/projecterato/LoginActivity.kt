@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class LoginActivity : AppCompatActivity() {
     private var volumen=true
@@ -18,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
         val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver)
 
         imageButtonVolver.setOnClickListener {
-            val intent = Intent(this, SettingsNLActivity::class.java)
+            val intent = Intent(this, ProfileMenuNLActivity::class.java)
             startActivity(intent)
         }
 
@@ -39,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         buttonIniciarSesion.setOnClickListener {
             MainActivity.setLogin()
-            val intent = Intent(this, SettingsActivity::class.java)
+            val intent = Intent(this, ProfileMenuActivity::class.java)
             startActivity(intent)
         }
 

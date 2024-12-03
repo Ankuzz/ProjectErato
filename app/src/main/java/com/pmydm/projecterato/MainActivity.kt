@@ -8,10 +8,12 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     companion object {
         private var login = false
-
-
         fun setLogin() {
-            login = true
+            if(login){
+                login=false
+            }else{
+                login=true
+            }
         }
 
         fun isLoggedIn(): Boolean {
@@ -38,10 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         imageButtonMenu.setOnClickListener {
             if (isLoggedIn()) {
-                val intent = Intent(this, SettingsActivity::class.java)
+                val intent = Intent(this, ProfileMenuActivity::class.java)
                 startActivity(intent)
             } else {
-                val intent = Intent(this, SettingsNLActivity::class.java)
+                val intent = Intent(this, ProfileMenuNLActivity::class.java)
                 startActivity(intent)
             }
         }

@@ -6,12 +6,17 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
-class RegisterActivity : AppCompatActivity() {
+class ProfileMenuActivity : AppCompatActivity() {
     private var volumen=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_profile_menu)
+        val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver)
 
-        setContentView(R.layout.activity_register)
+        imageButtonVolver.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val imageButtonVolumen: ImageButton = findViewById(R.id.imageButtonVolumen)
 
@@ -22,25 +27,15 @@ class RegisterActivity : AppCompatActivity() {
             } else {
                 imageButtonVolumen.setImageResource(R.drawable.iconovolumenencendido)
                 volumen=true
-            }
-            // Alternar el estado
+            }  // Alternar el estado
         }
 
-        val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver)
+        val buttonAjustes: Button = findViewById(R.id.buttonAjustes)
 
-        imageButtonVolver.setOnClickListener {
-            val intent = Intent(this, ProfileMenuNLActivity::class.java)
+        buttonAjustes.setOnClickListener {
+            val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
         }
 
-
-
-        val buttonRegister: Button = findViewById(R.id.buttonRegister)
-
-        buttonRegister.setOnClickListener {
-            MainActivity.setLogin()
-            val intent = Intent(this, ProfileMenuActivity::class.java)
-            startActivity(intent)
-        }
     }
 }

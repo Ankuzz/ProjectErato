@@ -5,64 +5,37 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingsActivity"
+    tools:context=".ProfileMenuNLActivity"
     android:background="@drawable/fondoapp"
     android:scaleType="centerCrop">
 
     <Button
-        android:id="@+id/buttonIdioma"
-        android:layout_width="217dp"
+        android:id="@+id/buttonLogin"
+        android:layout_width="218dp"
         android:layout_height="87dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="97dp"
+        android:text="@string/iniciar_sesi_n"
         android:backgroundTint="#FFB4A2"
-        android:text="@string/idioma"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAjustes" />
-
-    <Button
-        android:id="@+id/buttonFondo"
-        android:layout_width="217dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="97dp"
-        android:backgroundTint="#FFB4A2"
-        android:text="@string/cambiar_fondo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDescargarDatos" />
-
-    <Button
-        android:id="@+id/buttonAjustes"
-        android:layout_width="217dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="304dp"
-        android:layout_marginEnd="97dp"
-        android:backgroundTint="#FFB4A2"
-        android:text="@string/ajustes"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonDescargarDatos"
-        android:layout_width="217dp"
+        android:id="@+id/buttonRegister"
+        android:layout_width="218dp"
         android:layout_height="87dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="240dp"
         android:layout_marginEnd="97dp"
         android:backgroundTint="#FFB4A2"
-        android:text="@string/descargar_datos"
+        android:text="@string/registrarse"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonIdioma" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButtonVolver"
@@ -88,5 +61,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/iconovolumenencendido" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

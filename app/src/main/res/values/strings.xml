@@ -16,4 +16,5 @@
     <string name="idioma">Idioma</string>
     <string name="descargar_datos">Descargar datos</string>
     <string name="cambiar_fondo">Cambiar fondo</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
 </resources>

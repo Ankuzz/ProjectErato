@@ -13,7 +13,10 @@
         android:theme="@style/Theme.ProjectErato"
         tools:targetApi="31">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileMenuActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -22,7 +25,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsNLActivity"
+            android:name=".ProfileMenuNLActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
