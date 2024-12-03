@@ -6,13 +6,15 @@ import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
-class SettingsNLActivity : AppCompatActivity(){
+class RegisterActivity : AppCompatActivity() {
     private var volumen=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_settingsnl)
+        setContentView(R.layout.activity_register)
 
         val imageButtonVolumen: ImageButton = findViewById(R.id.imageButtonVolumen)
 
@@ -23,27 +25,24 @@ class SettingsNLActivity : AppCompatActivity(){
             } else {
                 imageButtonVolumen.setImageResource(R.drawable.iconovolumenencendido)
                 volumen=true
-            }// Alternar el estado
-        }
-
-        val buttonLogin: Button = findViewById(R.id.buttonLogin)
-
-        buttonLogin.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            }
+            // Alternar el estado
         }
 
         val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver)
 
         imageButtonVolver.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, SettingsNLActivity::class.java)
             startActivity(intent)
         }
 
-        val buttonRegister : Button = findViewById(R.id.buttonRegister)
+
+
+        val buttonRegister: Button = findViewById(R.id.buttonRegister)
 
         buttonRegister.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            MainActivity.setLogin()
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
     }

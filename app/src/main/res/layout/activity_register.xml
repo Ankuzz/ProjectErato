@@ -5,9 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
     android:background="@drawable/fondoapp"
-    android:scaleType="centerCrop"
-    tools:context=".LoginActivity">
+    android:scaleType="centerCrop">
 
     <ImageButton
         android:id="@+id/imageButtonVolumen"
@@ -44,37 +44,8 @@
         android:contentDescription="@string/fondo_blanco"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/fondo_blanco" />
-
-    <Button
-        android:id="@+id/buttonIniciarSesion"
-        android:layout_width="159dp"
-        android:layout_height="61dp"
-        android:text="@string/iniciar_sesi_n"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        android:backgroundTint="#FFB4A2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextContrasena"
-        app:layout_constraintVertical_bias="0.192" />
-
-    <EditText
-        android:id="@+id/editTextContrasena"
-        android:layout_width="326dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="32dp"
-        android:hint="@string/contrase_a"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextUsuario"
-        tools:ignore="Autofill,DuplicateSpeakableTextCheck" />
 
     <TextView
         android:id="@+id/textViewContrasena"
@@ -89,7 +60,7 @@
         app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/editTextUsuario"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.593"
         tools:ignore="TextSizeCheck" />
 
     <EditText
@@ -103,20 +74,8 @@
         app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.177"
+        app:layout_constraintVertical_bias="0.206"
         tools:ignore="Autofill,DuplicateSpeakableTextCheck,TextContrastCheck" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="70dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="64dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/logo_google" />
 
     <TextView
         android:id="@+id/textViewUsuario"
@@ -131,8 +90,44 @@
         app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.755"
+        app:layout_constraintVertical_bias="0.779"
         tools:ignore="TextSizeCheck" />
 
+    <EditText
+        android:id="@+id/editTextContrasena"
+        android:layout_width="326dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="32dp"
+        android:hint="@string/contrase_a"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextUsuario"
+        tools:ignore="Autofill,DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="159dp"
+        android:layout_height="61dp"
+        android:text="@string/registrarse"
+        android:backgroundTint="#FFB4A2"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextContrasena"
+        app:layout_constraintVertical_bias="0.148" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="70dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:srcCompat="@drawable/logo_google" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

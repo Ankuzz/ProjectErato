@@ -3,25 +3,22 @@ package com.pmydm.projecterato
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
-    companion object {
-        private var login = false
-
-
-        fun setLogin() {
-            login = true
-        }
-
-        fun isLoggedIn(): Boolean {
-            return login
-        }
-    }
+class SettingsActivity : AppCompatActivity() {
     private var volumen=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_settings)
+        val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver)
+
+        imageButtonVolver.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         val imageButtonVolumen: ImageButton = findViewById(R.id.imageButtonVolumen)
 
@@ -33,17 +30,6 @@ class MainActivity : AppCompatActivity() {
                 imageButtonVolumen.setImageResource(R.drawable.iconovolumenencendido)
                 volumen=true
             }  // Alternar el estado
-        }
-        val imageButtonMenu: ImageButton = findViewById(R.id.imageButtonMenu)
-
-        imageButtonMenu.setOnClickListener {
-            if (isLoggedIn()) {
-                val intent = Intent(this, SettingsActivity::class.java)
-                startActivity(intent)
-            } else {
-                val intent = Intent(this, SettingsNLActivity::class.java)
-                startActivity(intent)
-            }
         }
     }
 }
