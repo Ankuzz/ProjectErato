@@ -16,7 +16,7 @@
         android:layout_marginStart="96dp"
         android:layout_marginTop="116dp"
         android:layout_marginEnd="97dp"
-        android:text="@string/iniciar_sesi_n"
+        android:text="@string/iniciar_sesion"
         android:backgroundTint="#FFB4A2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

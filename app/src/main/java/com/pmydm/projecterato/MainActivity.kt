@@ -2,6 +2,7 @@ package com.pmydm.projecterato
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
@@ -9,11 +10,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private var login = false
         fun setLogin() {
-            if(login){
-                login=false
-            }else{
-                login=true
-            }
+            login = !login
         }
 
         fun isLoggedIn(): Boolean {
@@ -46,6 +43,27 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, ProfileMenuNLActivity::class.java)
                 startActivity(intent)
             }
+        }
+
+        val buttonBanderas: Button = findViewById(R.id.buttonBanderas)
+        buttonBanderas.setOnClickListener {
+            val intent = Intent(this, MenuRegionSelectionActivity::class.java)
+            intent.putExtra("Tipo", "Banderas")
+            startActivity(intent)
+        }
+
+        val buttonPaises: Button = findViewById(R.id.buttonPaises)
+        buttonPaises.setOnClickListener {
+            val intent = Intent(this, MenuRegionSelectionActivity::class.java)
+            intent.putExtra("Tipo", "Paises")
+            startActivity(intent)
+        }
+
+        val buttonCapitales: Button = findViewById(R.id.buttonCapitales)
+        buttonCapitales.setOnClickListener {
+            val intent = Intent(this, MenuRegionSelectionActivity::class.java)
+            intent.putExtra("Tipo", "Capitales")
+            startActivity(intent)
         }
     }
 }

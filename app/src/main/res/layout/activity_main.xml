@@ -43,7 +43,7 @@
         android:layout_marginEnd="110dp"
         android:layout_marginBottom="24dp"
         android:backgroundTint="#FFB4A2"
-        android:text="@string/pa_ses"
+        android:text="@string/paises"
         app:layout_constraintBottom_toTopOf="@+id/buttonCapitales"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
