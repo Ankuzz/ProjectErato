@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "955024033374",
+    "project_id": "projecterato",
+    "storage_bucket": "projecterato.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955024033374:android:55defae859574de64416cf",
+        "android_client_info": {
+          "package_name": "com.pmydm.projecterato"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5jYbDeYUKgbqpwGgThdLRPSdXCsw6YDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
