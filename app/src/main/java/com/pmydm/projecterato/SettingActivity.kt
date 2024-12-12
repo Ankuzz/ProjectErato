@@ -30,13 +30,5 @@ class SettingActivity : AppCompatActivity() {
             }
             // Alternar el estado
         }
-
-        val buttonCerrarSesion : Button = findViewById(R.id.buttonCerrarSesion)
-
-        buttonCerrarSesion.setOnClickListener {
-            val intent = Intent(this, ProfileMenuNLActivity::class.java)
-            MainActivity.setLogin()
-            startActivity(intent)
-        }
     }
 }

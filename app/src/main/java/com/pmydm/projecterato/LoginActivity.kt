@@ -12,13 +12,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver)
-
-        imageButtonVolver.setOnClickListener {
-            val intent = Intent(this, ProfileMenuNLActivity::class.java)
-            startActivity(intent)
-        }
-
         val imageButtonVolumen: ImageButton = findViewById(R.id.imageButtonVolumen)
 
         imageButtonVolumen.setOnClickListener {
@@ -36,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
 
         buttonIniciarSesion.setOnClickListener {
             MainActivity.setLogin()
-            val intent = Intent(this, ProfileMenuActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 

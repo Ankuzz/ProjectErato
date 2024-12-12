@@ -15,24 +15,12 @@
         android:layout_height="63dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/button_background"
+        android:paddingBottom="8dp"
+        android:background="@drawable/button_square_background"
         android:contentDescription="@string/botonvolumen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/iconovolumenencendido" />
-
-    <ImageButton
-        android:id="@+id/imageButtonVolver"
-        android:layout_width="63dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_background"
-        android:contentDescription="@string/botonvolver"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/flecha"
-        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -50,16 +38,37 @@
 
     <Button
         android:id="@+id/buttonIniciarSesion"
-        android:layout_width="159dp"
-        android:layout_height="61dp"
+        android:layout_width="156dp"
+        android:layout_height="66dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/bungee_regular"
+        android:paddingBottom="9dp"
         android:text="@string/iniciar_sesion"
+        android:textColor="#6F5D47"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        android:backgroundTint="#FFB4A2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextContrasena"
-        app:layout_constraintVertical_bias="0.192" />
+        app:layout_constraintVertical_bias="0.169" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="159dp"
+        android:layout_height="66dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/bungee_regular"
+        android:paddingBottom="8dp"
+        android:text="@string/registrarse"
+        android:textColor="#6F5D47"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextContrasena"
+        app:layout_constraintVertical_bias="0.169" />
 
     <EditText
         android:id="@+id/editTextContrasena"
@@ -112,6 +121,7 @@
         android:layout_height="59dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="64dp"
+        android:contentDescription="@string/logogoogle"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"

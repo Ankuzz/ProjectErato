@@ -37,5 +37,13 @@ class ProfileMenuActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val buttonCerrarSesion : Button = findViewById(R.id.buttonCerrarSesion)
+
+        buttonCerrarSesion.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            MainActivity.setLogin()
+            startActivity(intent)
+        }
+
     }
 }

@@ -35,6 +35,7 @@ class GameActivity : AppCompatActivity() {
         }
 
         val buttonWin: Button = findViewById(R.id.buttonWin)
+        buttonWin.setBackgroundResource(R.drawable.button_background)
         buttonWin.setOnClickListener {
             val intent = Intent(this, ResultsActivity::class.java)
             startActivity(intent)

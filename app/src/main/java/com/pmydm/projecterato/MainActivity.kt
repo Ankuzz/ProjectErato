@@ -36,13 +36,8 @@ class MainActivity : AppCompatActivity() {
         val imageButtonMenu: ImageButton = findViewById(R.id.imageButtonMenu)
 
         imageButtonMenu.setOnClickListener {
-            if (isLoggedIn()) {
-                val intent = Intent(this, ProfileMenuActivity::class.java)
-                startActivity(intent)
-            } else {
-                val intent = Intent(this, ProfileMenuNLActivity::class.java)
-                startActivity(intent)
-            }
+            val intent = Intent(this, ProfileMenuActivity::class.java)
+            startActivity(intent)
         }
 
         val buttonBanderas: Button = findViewById(R.id.buttonBanderas)
