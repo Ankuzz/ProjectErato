@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE countries [
+    <!ELEMENT countries (country+)>
+
+    <!ELEMENT country (name, capital, flag)>
+
+    <!ELEMENT name (default, en, de, pl)>
+    <!ELEMENT default (#PCDATA)>
+    <!ELEMENT en (#PCDATA)>
+    <!ELEMENT de (#PCDATA)>
+    <!ELEMENT pl (#PCDATA)>
+
+    <!ELEMENT capital (default, en, de, pl)>
+    <!ELEMENT flag EMPTY>
+    <!ATTLIST flag path CDATA #REQUIRED>
+    ]>
+<countries>
+    <country>
+        <name>
+            <default>Antigua y Barbuda</default>
+            <en>Antigua and Barbuda</en>
+            <de>Antigua und Barbuda</de>
+            <pl>Antigua i Barbuda</pl>
+        </name>
+        <capital>
+            <default>Saint John's</default>
+            <en>Saint John's</en>
+            <de>Saint John's</de>
+            <pl>Saint John's</pl>
+        </capital>
+        <flag path="Banderas/America/AntiguayBarbuda.png" />
+    </country>
+    <country>
+        <name>
+            <default>Argentina</default>
+            <en>Argentina</en>
+            <de>Argentinien</de>
+            <pl>Argentyna</pl>
+        </name>
+        <capital>
+            <default>Buenos Aires</default>
+            <en>Buenos Aires</en>
+            <de>Buenos Aires</de>
+            <pl>Buenos Aires</pl>
+        </capital>
+        <flag path="Banderas/America/Argentina.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bahamas</default>
+            <en>The Bahamas</en>
+            <de>Die Bahamas</de>
+            <pl>Bahamy</pl>
+        </name>
+        <capital>
+            <default>Nassau</default>
+            <en>Nassau</en>
+            <de>Nassau</de>
+            <pl>Nassau</pl>
+        </capital>
+        <flag path="Banderas/America/bahamas.png" />
+    </country>
+    <country>
+        <name>
+            <default>Barbados</default>
+            <en>Barbados</en>
+            <de>Barbados</de>
+            <pl>Barbados</pl>
+        </name>
+        <capital>
+            <default>Bridgetown</default>
+            <en>Bridgetown</en>
+            <de>Bridgetown</de>
+            <pl>Bridgetown</pl>
+        </capital>
+        <flag path="Banderas/America/barbados.png" />
+    </country>
+    <country>
+        <name>
+            <default>Belice</default>
+            <en>Belize</en>
+            <de>Belize</de>
+            <pl>Belize</pl>
+        </name>
+        <capital>
+            <default>Belmopán</default>
+            <en>Belmopan</en>
+            <de>Belmopan</de>
+            <pl>Belmopan</pl>
+        </capital>
+        <flag path="Banderas/America/Belize.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bolivia</default>
+            <en>Bolivia</en>
+            <de>Bolivien</de>
+            <pl>Boliwia</pl>
+        </name>
+        <capital>
+            <default>Sucre</default>
+            <en>Sucre</en>
+            <de>Sucre</de>
+            <pl>Sucre</pl>
+        </capital>
+        <flag path="Banderas/America/Bolivia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Brasil</default>
+            <en>Brazil</en>
+            <de>Brasilien</de>
+            <pl>Brazylia</pl>
+        </name>
+        <capital>
+            <default>Brasilia</default>
+            <en>Brasilia</en>
+            <de>Brasilia</de>
+            <pl>Brasília</pl>
+        </capital>
+        <flag path="Banderas/America/Brazil.png" />
+    </country>
+    <country>
+        <name>
+            <default>Canadá</default>
+            <en>Canada</en>
+            <de>Kanada</de>
+            <pl>Kanada</pl>
+        </name>
+        <capital>
+            <default>Ottawa</default>
+            <en>Ottawa</en>
+            <de>Ottawa</de>
+            <pl>Ottawa</pl>
+        </capital>
+        <flag path="Banderas/America/Canada.png" />
+    </country>
+    <country>
+        <name>
+            <default>Chile</default>
+            <en>Chile</en>
+            <de>Chile</de>
+            <pl>Chile</pl>
+        </name>
+        <capital>
+            <default>Santiago</default>
+            <en>Santiago</en>
+            <de>Santiago</de>
+            <pl>Santiago</pl>
+        </capital>
+        <flag path="Banderas/America/Chile.png" />
+    </country>
+    <country>
+        <name>
+            <default>Colombia</default>
+            <en>Colombia</en>
+            <de>Kolumbien</de>
+            <pl>Kolumbia</pl>
+        </name>
+        <capital>
+            <default>Bogotá</default>
+            <en>Bogotá</en>
+            <de>Bogotá</de>
+            <pl>Bogotá</pl>
+        </capital>
+        <flag path="Banderas/America/Colombia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Costa Rica</default>
+            <en>Costa Rica</en>
+            <de>Kosta Rica</de>
+            <pl>Kostaryka</pl>
+        </name>
+        <capital>
+            <default>San José</default>
+            <en>San José</en>
+            <de>San José</de>
+            <pl>San José</pl>
+        </capital>
+        <flag path="Banderas/America/CostaRica.png" />
+    </country>
+    <country>
+        <name>
+            <default>Cuba</default>
+            <en>Cuba</en>
+            <de>Kuba</de>
+            <pl>Kuba</pl>
+        </name>
+        <capital>
+            <default>La Habana</default>
+            <en>Havana</en>
+            <de>Havanna</de>
+            <pl>Hawana</pl>
+        </capital>
+        <flag path="Banderas/America/Cuba.png" />
+    </country>
+    <country>
+        <name>
+            <default>Dominica</default>
+            <en>Dominica</en>
+            <de>Dominica</de>
+            <pl>Dominika</pl>
+        </name>
+        <capital>
+            <default>Roseau</default>
+            <en>Roseau</en>
+            <de>Roseau</de>
+            <pl>Roseau</pl>
+        </capital>
+        <flag path="Banderas/America/Dominica.png" />
+    </country>
+    <country>
+        <name>
+            <default>Ecuador</default>
+            <en>Ecuador</en>
+            <de>Ecuador</de>
+            <pl>Ekwador</pl>
+        </name>
+        <capital>
+            <default>Quito</default>
+            <en>Quito</en>
+            <de>Quito</de>
+            <pl>Quito</pl>
+        </capital>
+        <flag path="Banderas/America/Ecuador.png" />
+    </country>
+    <country>
+        <name>
+            <default>El Salvador</default>
+            <en>El Salvador</en>
+            <de>El Salvador</de>
+            <pl>Salwador</pl>
+        </name>
+        <capital>
+            <default>San Salvador</default>
+            <en>San Salvador</en>
+            <de>San Salvador</de>
+            <pl>San Salvador</pl>
+        </capital>
+        <flag path="Banderas/America/ElSalvador.png" />
+    </country>
+    <country>
+        <name>
+            <default>Granada</default>
+            <en>Grenada</en>
+            <de>Grenada</de>
+            <pl>Grenada</pl>
+        </name>
+        <capital>
+            <default>Saint George's</default>
+            <en>Saint George's</en>
+            <de>Saint George's</de>
+            <pl>Saint George's</pl>
+        </capital>
+        <flag path="Banderas/America/Granada.png" />
+    </country>
+    <country>
+        <name>
+            <default>Guatemala</default>
+            <en>Guatemala</en>
+            <de>Guatemala</de>
+            <pl>Gwatemala</pl>
+        </name>
+        <capital>
+            <default>Ciudad de Guatemala</default>
+            <en>Guatemala City</en>
+            <de>Guatemala Stadt</de>
+            <pl>Miasto Gwatemala</pl>
+        </capital>
+        <flag path="Banderas/America/Guatemala.png" />
+    </country>
+    <country>
+        <name>
+            <default>Guyana</default>
+            <en>Guyana</en>
+            <de>Guyana</de>
+            <pl>Gujana</pl>
+        </name>
+        <capital>
+            <default>Georgetown</default>
+            <en>Georgetown</en>
+            <de>Georgetown</de>
+            <pl>Georgetown</pl>
+        </capital>
+        <flag path="Banderas/America/Guyana.png" />
+    </country>
+    <country>
+        <name>
+            <default>Guayana Francesa</default>
+            <en>French Guiana</en>
+            <de>Französisch Guayana</de>
+            <pl>Gujana Francuska</pl>
+        </name>
+        <capital>
+            <default>Cayena</default>
+            <en>Cayenne</en>
+            <de>Cayenne</de>
+            <pl>Cayenne</pl>
+        </capital>
+        <flag path="Banderas/America/GuyanaFrancesa.png" />
+    </country>
+    <country>
+        <name>
+            <default>Haití</default>
+            <en>Haiti</en>
+            <de>Haiti</de>
+            <pl>Haiti</pl>
+        </name>
+        <capital>
+            <default>Puerto Príncipe</default>
+            <en>Port-au-Prince</en>
+            <de>Port-au-Prince</de>
+            <pl>Port-au-Prince</pl>
+        </capital>
+        <flag path="Banderas/America/Haiti.png" />
+    </country>
+    <country>
+        <name>
+            <default>Honduras</default>
+            <en>Honduras</en>
+            <de>Honduras</de>
+            <pl>Honduras</pl>
+        </name>
+        <capital>
+            <default>Tegucigalpa</default>
+            <en>Tegucigalpa</en>
+            <de>Tegucigalpa</de>
+            <pl>Tegucigalpa</pl>
+        </capital>
+        <flag path="Banderas/America/Honduras.png" />
+    </country>
+    <country>
+        <name>
+            <default>Jamaica</default>
+            <en>Jamaica</en>
+            <de>Jamaika</de>
+            <pl>Jamajka</pl>
+        </name>
+        <capital>
+            <default>Kingston</default>
+            <en>Kingston</en>
+            <de>Kingston</de>
+            <pl>Kingston</pl>
+        </capital>
+        <flag path="Banderas/America/Jamaica.png" />
+    </country>
+    <country>
+        <name>
+            <default>México</default>
+            <en>Mexico</en>
+            <de>Mexiko</de>
+            <pl>Meksyk</pl>
+        </name>
+        <capital>
+            <default>Ciudad de México</default>
+            <en>Mexico City</en>
+            <de>Mexiko-Stadt</de>
+            <pl>Miasto Meksyk</pl>
+        </capital>
+        <flag path="Banderas/America/Mexico.png" />
+    </country>
+    <country>
+        <name>
+            <default>Nicaragua</default>
+            <en>Nicaragua</en>
+            <de>Nicaragua</de>
+            <pl>Nikaragua</pl>
+        </name>
+        <capital>
+            <default>Managua</default>
+            <en>Managua</en>
+            <de>Managua</de>
+            <pl>Managua</pl>
+        </capital>
+        <flag path="Banderas/America/Nicagua.png" />
+    </country>
+    <country>
+        <name>
+            <default>Panamá</default>
+            <en>Panama</en>
+            <de>Panama</de>
+            <pl>Panama</pl>
+        </name>
+        <capital>
+            <default>Ciudad de Panamá</default>
+            <en>Panama City</en>
+            <de>Panama-Stadt</de>
+            <pl>Miasto Panama</pl>
+        </capital>
+        <flag path="Banderas/America/Panama.png" />
+    </country>
+    <country>
+        <name>
+            <default>Paraguay</default>
+            <en>Paraguay</en>
+            <de>Paraguay</de>
+            <pl>Paragwaj</pl>
+        </name>
+        <capital>
+            <default>Asunción</default>
+            <en>Asunción</en>
+            <de>Asunción</de>
+            <pl>Asunción</pl>
+        </capital>
+        <flag path="Banderas/America/Paraguay.png" />
+    </country>
+    <country>
+        <name>
+            <default>Perú</default>
+            <en>Peru</en>
+            <de>Peru</de>
+            <pl>Peru</pl>
+        </name>
+        <capital>
+            <default>Lima</default>
+            <en>Lima</en>
+            <de>Lima</de>
+            <pl>Lima</pl>
+        </capital>
+        <flag path="Banderas/America/Peru.png" />
+    </country>
+    <country>
+        <name>
+            <default>República Dominicana</default>
+            <en>Dominican Republic</en>
+            <de>Dominikanische Republik</de>
+            <pl>Republika Dominikany</pl>
+        </name>
+        <capital>
+            <default>Santo Domingo</default>
+            <en>Santo Domingo</en>
+            <de>Santo Domingo</de>
+            <pl>Santo Domingo</pl>
+        </capital>
+        <flag path="Banderas/America/RepublicaDominicana.png" />
+    </country>
+    <country>
+        <name>
+            <default>San Cristóbal y Nieves</default>
+            <en>Saint Kitts and Nevis</en>
+            <de>St. Kitts und Nevis</de>
+            <pl>Saint Kitts i Nevis</pl>
+        </name>
+        <capital>
+            <default>Basseterre</default>
+            <en>Basseterre</en>
+            <de>Basseterre</de>
+            <pl>Basseterre</pl>
+        </capital>
+        <flag path="Banderas/America/SanCristobalyNieves.png" />
+    </country>
+    <country>
+        <name>
+            <default>Santa Lucía</default>
+            <en>Saint Lucia</en>
+            <de>Saint Lucia</de>
+            <pl>Saint Lucia</pl>
+        </name>
+        <capital>
+            <default>Castries</default>
+            <en>Castries</en>
+            <de>Castries</de>
+            <pl>Castries</pl>
+        </capital>
+        <flag path="Banderas/America/SantaLucía.png" />
+    </country>
+    <country>
+        <name>
+            <default>San Vicente y las Granadinas</default>
+            <en>Saint Vincent and the Grenadines</en>
+            <de>St. Vincent und die Grenadinen</de>
+            <pl>Saint Vincent i Grenadyny</pl>
+        </name>
+        <capital>
+            <default>Kingstown</default>
+            <en>Kingstown</en>
+            <de>Kingstown</de>
+            <pl>Kingstown</pl>
+        </capital>
+        <flag path="Banderas/America/SanVicenteylasGranadinas.png" />
+    </country>
+    <country>
+        <name>
+            <default>Surinam</default>
+            <en>Suriname</en>
+            <de>Suriname</de>
+            <pl>Surinam</pl>
+        </name>
+        <capital>
+            <default>Paramaribo</default>
+            <en>Paramaribo</en>
+            <de>Paramaribo</de>
+            <pl>Paramaribo</pl>
+        </capital>
+        <flag path="Banderas/America/Suriname.png" />
+    </country>
+    <country>
+        <name>
+            <default>Trinidad y Tobago</default>
+            <en>Trinidad and Tobago</en>
+            <de>Trinidad und Tobago</de>
+            <pl>Trynidad i Tobago</pl>
+        </name>
+        <capital>
+            <default>Puerto España</default>
+            <en>Port of Spain</en>
+            <de>Port of Spain</de>
+            <pl>Port of Spain</pl>
+        </capital>
+        <flag path="Banderas/America/TrinidadyTobago.png" />
+    </country>
+    <country>
+        <name>
+            <default>Uruguay</default>
+            <en>Uruguay</en>
+            <de>Uruguay</de>
+            <pl>Urugwaj</pl>
+        </name>
+        <capital>
+            <default>Montevideo</default>
+            <en>Montevideo</en>
+            <de>Montevideo</de>
+            <pl>Montevideo</pl>
+        </capital>
+        <flag path="Banderas/America/Uruguay.png" />
+    </country>
+    <country>
+        <name>
+            <default>Estados Unidos</default>
+            <en>United States</en>
+            <de>Vereinigte Staaten</de>
+            <pl>Stany Zjednoczone</pl>
+        </name>
+        <capital>
+            <default>Washington D.C.</default>
+            <en>Washington, D.C.</en>
+            <de>Washington, D.C.</de>
+            <pl>Waszyngton, D.C.</pl>
+        </capital>
+        <flag path="Banderas/America/USA.png" />
+    </country>
+    <country>
+        <name>
+            <default>Venezuela</default>
+            <en>Venezuela</en>
+            <de>Venezuela</de>
+            <pl>Wenezuela</pl>
+        </name>
+        <capital>
+            <default>Caracas</default>
+            <en>Caracas</en>
+            <de>Caracas</de>
+            <pl>Caracas</pl>
+        </capital>
+        <flag path="Banderas/America/Venezuela.png" />
+    </country>
+</countries>

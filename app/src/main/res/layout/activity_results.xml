@@ -2,12 +2,68 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/authLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondoapp"
     android:scaleType="centerCrop"
     tools:context=".ResultsActivity">
+
+    <LinearLayout
+        android:id="@+id/fondoNumeroFallos"
+        android:layout_width="108dp"
+        android:layout_height="104dp"
+        android:background="@drawable/texto"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.607">
+
+        <TextView
+            android:id="@+id/numeroFallos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:fontFamily="@font/bungee_regular"
+            android:padding="10dp"
+            android:text="0"
+            android:textColor="#D7B879"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fondoNumeroAciertos"
+        android:layout_width="108dp"
+        android:layout_height="104dp"
+        android:background="@drawable/texto"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.442">
+
+        <TextView
+            android:id="@+id/numeroAciertos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:fontFamily="@font/bungee_regular"
+            android:padding="10dp"
+            android:text="0"
+            android:textColor="#D7B879"
+            android:textSize="30sp" />
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/imageButtonVolumen"
@@ -24,33 +80,103 @@
 
     <Button
         android:id="@+id/buttonMenu"
-        android:layout_width="280dp"
-        android:layout_height="252dp"
+        android:layout_width="220dp"
+        android:layout_height="93dp"
         android:background="@drawable/button_background"
         android:fontFamily="@font/bungee_regular"
-        android:text="@string/menu"
-        android:textSize="18sp"
         android:paddingBottom="9dp"
+        android:text="@string/menu"
         android:textColor="#6F5D47"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.688" />
+        app:layout_constraintVertical_bias="0.81" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="263dp"
-        android:layout_height="84dp"
-        android:fontFamily="@font/bungee_regular"
-        android:text="Congrats!"
-        android:textAlignment="center"
-        android:textSize="60sp"
+    <LinearLayout
+        android:id="@+id/textoResultados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/texto"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.191" />
+        app:layout_constraintVertical_bias="0.194">
+
+        <TextView
+            android:id="@+id/buttonText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:fontFamily="@font/bungee_regular"
+            android:padding="10dp"
+            android:text="Resultados"
+            android:textColor="#D7B879"
+            android:textSize="45sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fondoTextoAciertos"
+        android:layout_width="224dp"
+        android:layout_height="105dp"
+        android:background="@drawable/texto"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.441">
+
+        <TextView
+            android:id="@+id/textoAciertos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:fontFamily="@font/bungee_regular"
+            android:padding="10dp"
+            android:text="Aciertos: "
+            android:textColor="#D7B879"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fondoTextoFallos"
+        android:layout_width="224dp"
+        android:layout_height="105dp"
+        android:background="@drawable/texto"
+        android:clickable="false"
+        android:focusable="false"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609">
+
+        <TextView
+            android:id="@+id/textoFallos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:fontFamily="@font/bungee_regular"
+            android:padding="10dp"
+            android:text="Fallos: "
+            android:textColor="#D7B879"
+            android:textSize="30sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

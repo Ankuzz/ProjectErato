@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE countries [
+    <!ELEMENT countries (country+)>
+
+    <!ELEMENT country (name, capital, flag)>
+
+    <!ELEMENT name (default, en, de, pl)>
+    <!ELEMENT default (#PCDATA)>
+    <!ELEMENT en (#PCDATA)>
+    <!ELEMENT de (#PCDATA)>
+    <!ELEMENT pl (#PCDATA)>
+
+    <!ELEMENT capital (default, en, de, pl)>
+    <!ELEMENT flag EMPTY>
+    <!ATTLIST flag path CDATA #REQUIRED>
+    ]>
+<countries>
+    <country>
+        <name>
+            <default>Australia</default>
+            <en>Australia</en>
+            <de>Australien</de>
+            <pl>Australia</pl>
+        </name>
+        <capital>
+            <default>Canberra</default>
+            <en>Canberra</en>
+            <de>Canberra</de>
+            <pl>Canberra</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Australia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Estados Federados de Micronesia</default>
+            <en>Federated States of Micronesia</en>
+            <de>Föderierte Staaten von Mikronesien</de>
+            <pl>Stany Federacji Mikronezji</pl>
+        </name>
+        <capital>
+            <default>Palikir</default>
+            <en>Palikir</en>
+            <de>Palikir</de>
+            <pl>Palikir</pl>
+        </capital>
+        <flag path="Banderas/Oceania/FederatedStatesMicronesia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Fiji</default>
+            <en>Fiji</en>
+            <de>Fidschi</de>
+            <pl>Fidżi</pl>
+        </name>
+        <capital>
+            <default>Suva</default>
+            <en>Suva</en>
+            <de>Suva</de>
+            <pl>Suva</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Fiji.png" />
+    </country>
+    <country>
+        <name>
+            <default>Hawái</default>
+            <en>Hawaii</en>
+            <de>Hawaii</de>
+            <pl>Hawaje</pl>
+        </name>
+        <capital>
+            <default>Honolulu</default>
+            <en>Honolulu</en>
+            <de>Honolulu</de>
+            <pl>Honolulu</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Hawaii.png" />
+    </country>
+    <country>
+        <name>
+            <default>Islas Cook</default>
+            <en>Cook Islands</en>
+            <de>Cookinseln</de>
+            <pl>Wyspy Cooka</pl>
+        </name>
+        <capital>
+            <default>Avarua</default>
+            <en>Avarua</en>
+            <de>Avarua</de>
+            <pl>Avarua</pl>
+        </capital>
+        <flag path="Banderas/Oceania/IslasCook.png" />
+    </country>
+    <country>
+        <name>
+            <default>Islas Marianas del Norte</default>
+            <en>Northern Mariana Islands</en>
+            <de>Nördliche Marianen</de>
+            <pl>Północne Wyspy Mariana</pl>
+        </name>
+        <capital>
+            <default>Saipan</default>
+            <en>Saipan</en>
+            <de>Saipan</de>
+            <pl>Saipan</pl>
+        </capital>
+        <flag path="Banderas/Oceania/IslasMarianasNorte.png" />
+    </country>
+    <country>
+        <name>
+            <default>Islas Marshall</default>
+            <en>Marshall Islands</en>
+            <de>Marshallinseln</de>
+            <pl>Wyspy Marshalla</pl>
+        </name>
+        <capital>
+            <default>Majuro</default>
+            <en>Majuro</en>
+            <de>Majuro</de>
+            <pl>Majuro</pl>
+        </capital>
+        <flag path="Banderas/Oceania/IslasMarshall.png" />
+    </country>
+    <country>
+        <name>
+            <default>Islas Pitcairn</default>
+            <en>Pitcairn Islands</en>
+            <de>Pitcairninseln</de>
+            <pl>Wyspy Pitcairn</pl>
+        </name>
+        <capital>
+            <default>Adamstown</default>
+            <en>Adamstown</en>
+            <de>Adamstown</de>
+            <pl>Adamstown</pl>
+        </capital>
+        <flag path="Banderas/Oceania/IslasPitcairn.png" />
+    </country>
+    <country>
+        <name>
+            <default>Islas Salomón</default>
+            <en>Solomon Islands</en>
+            <de>Salomonen</de>
+            <pl>Wyspy Salomona</pl>
+        </name>
+        <capital>
+            <default>Honiara</default>
+            <en>Honiara</en>
+            <de>Honiara</de>
+            <pl>Honiara</pl>
+        </capital>
+        <flag path="Banderas/Oceania/IslasSalomon.png" />
+    </country>
+    <country>
+        <name>
+            <default>Kiribati</default>
+            <en>Kiribati</en>
+            <de>Kiribati</de>
+            <pl>Kiribati</pl>
+        </name>
+        <capital>
+            <default>Tarawa</default>
+            <en>Tarawa</en>
+            <de>Tarawa</de>
+            <pl>Tarawa</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Kiribati.png" />
+    </country>
+    <country>
+        <name>
+            <default>Nauru</default>
+            <en>Nauru</en>
+            <de>Nauru</de>
+            <pl>Nauru</pl>
+        </name>
+        <capital>
+            <default>Yaren</default>
+            <en>Yaren</en>
+            <de>Yaren</de>
+            <pl>Yaren</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Nauru.png" />
+    </country>
+    <country>
+        <name>
+            <default>Niue</default>
+            <en>Niue</en>
+            <de>Niue</de>
+            <pl>Niue</pl>
+        </name>
+        <capital>
+            <default>Alofi</default>
+            <en>Alofi</en>
+            <de>Alofi</de>
+            <pl>Alofi</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Niue.png" />
+    </country>
+    <country>
+        <name>
+            <default>New Caledonia</default>
+            <en>New Caledonia</en>
+            <de>Neukaledonien</de>
+            <pl>Nowa Kaledonia</pl>
+        </name>
+        <capital>
+            <default>Nouméa</default>
+            <en>Nouméa</en>
+            <de>Nouméa</de>
+            <pl>Nouméa</pl>
+        </capital>
+        <flag path="Banderas/Oceania/NuevaCaledonia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Nueva Zelanda</default>
+            <en>New Zealand</en>
+            <de>Neuseeland</de>
+            <pl>Nowa Zelandia</pl>
+        </name>
+        <capital>
+            <default>Wellington</default>
+            <en>Wellington</en>
+            <de>Wellington</de>
+            <pl>Wellington</pl>
+        </capital>
+        <flag path="Banderas/Oceania/NuevaZelanda.png" />
+    </country>
+    <country>
+        <name>
+            <default>Palaos</default>
+            <en>Palau</en>
+            <de>Palau</de>
+            <pl>Palau</pl>
+        </name>
+        <capital>
+            <default>Ngerulmud</default>
+            <en>Ngerulmud</en>
+            <de>Ngerulmud</de>
+            <pl>Ngerulmud</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Palaos.png" />
+    </country>
+    <country>
+        <name>
+            <default>Papúa Nueva Guinea</default>
+            <en>Papua New Guinea</en>
+            <de>Papua-Neuguinea</de>
+            <pl>Papua Nowa Gwinea</pl>
+        </name>
+        <capital>
+            <default>Port Moresby</default>
+            <en>Port Moresby</en>
+            <de>Port Moresby</de>
+            <pl>Port Moresby</pl>
+        </capital>
+        <flag path="Banderas/Oceania/PapuaNuevaGuinea.png" />
+    </country>
+    <country>
+        <name>
+            <default>Polinesia Francesa</default>
+            <en>French Polynesia</en>
+            <de>Französisch-Polynesien</de>
+            <pl>Polinezja Francuska</pl>
+        </name>
+        <capital>
+            <default>Papeete</default>
+            <en>Papeete</en>
+            <de>Papeete</de>
+            <pl>Papeete</pl>
+        </capital>
+        <flag path="Banderas/Oceania/PolinesiaFrancesa.png" />
+    </country>
+    <country>
+        <name>
+            <default>Samoa</default>
+            <en>Samoa</en>
+            <de>Samoa</de>
+            <pl>Samoa</pl>
+        </name>
+        <capital>
+            <default>Apia</default>
+            <en>Apia</en>
+            <de>Apia</de>
+            <pl>Apia</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Samoa.png" />
+    </country>
+    <country>
+        <name>
+            <default>Tokelau</default>
+            <en>Tokelau</en>
+            <de>Tokelau</de>
+            <pl>Tokelau</pl>
+        </name>
+        <capital>
+            <default>Fakaofo</default>
+            <en>Fakaofo</en>
+            <de>Fakaofo</de>
+            <pl>Fakaofo</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Tokelau.png" />
+    </country>
+    <country>
+        <name>
+            <default>Tonga</default>
+            <en>Tonga</en>
+            <de>Tonga</de>
+            <pl>Tonga</pl>
+        </name>
+        <capital>
+            <default>Nuku'alofa</default>
+            <en>Nuku'alofa</en>
+            <de>Nuku'alofa</de>
+            <pl>Nuku'alofa</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Tonga.png" />
+    </country>
+    <country>
+        <name>
+            <default>Tuvalu</default>
+            <en>Tuvalu</en>
+            <de>Tuvalu</de>
+            <pl>Tuvalu</pl>
+        </name>
+        <capital>
+            <default>Funafuti</default>
+            <en>Funafuti</en>
+            <de>Funafuti</de>
+            <pl>Funafuti</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Tuvalu.png" />
+    </country>
+    <country>
+        <name>
+            <default>Vanuatu</default>
+            <en>Vanuatu</en>
+            <de>Vanuatu</de>
+            <pl>Vanuatu</pl>
+        </name>
+        <capital>
+            <default>Port Vila</default>
+            <en>Port Vila</en>
+            <de>Port Vila</de>
+            <pl>Port Vila</pl>
+        </capital>
+        <flag path="Banderas/Oceania/Vanuatu.png" />
+    </country>
+    <country>
+        <name>
+            <default>Wallis y Futuna</default>
+            <en>Wallis and Futuna</en>
+            <de>Wallis und Futuna</de>
+            <pl>Wallis i Futuna</pl>
+        </name>
+        <capital>
+            <default>Mata Utu</default>
+            <en>Mata Utu</en>
+            <de>Mata Utu</de>
+            <pl>Mata Utu</pl>
+        </capital>
+        <flag path="Banderas/Oceania/WallisFutuna.png" />
+    </country>
+</countries>

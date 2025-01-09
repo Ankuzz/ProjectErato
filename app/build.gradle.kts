@@ -46,6 +46,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
-    implementation("com.google.firebase:firebase-analytics")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.firebase.auth)
+    implementation(libs.google.firebase.auth)
+    implementation(libs.play.services.auth)
+    implementation("com.facebook.android:facebook-android-sdk:latest.release") {
+        // Exclude the Support Library if it's still being pulled in transitively
+        exclude(group = "com.android.support")
+    }
 }

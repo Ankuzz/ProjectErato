@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE countries [
+    <!ELEMENT countries (country+)>
+
+    <!ELEMENT country (name, capital, flag)>
+
+    <!ELEMENT name (default, en, de, pl)>
+    <!ELEMENT default (#PCDATA)>
+    <!ELEMENT en (#PCDATA)>
+    <!ELEMENT de (#PCDATA)>
+    <!ELEMENT pl (#PCDATA)>
+
+    <!ELEMENT capital (default, en, de, pl)>
+    <!ELEMENT flag EMPTY>
+    <!ATTLIST flag path CDATA #REQUIRED>
+    ]>
+<countries>
+    <country>
+        <name>
+            <default>Afganistán</default>
+            <en>Afghanistan</en>
+            <de>Afghanistan</de>
+            <pl>Afganistan</pl>
+        </name>
+        <capital>
+            <default>Kabul</default>
+            <en>Kabul</en>
+            <de>Kabul</de>
+            <pl>Kabul</pl>
+        </capital>
+        <flag path="Banderas/Asia/Afganistan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Arabia Saudita</default>
+            <en>Saudi Arabia</en>
+            <de>Saudi-Arabien</de>
+            <pl>Arabia Saudyjska</pl>
+        </name>
+        <capital>
+            <default>Riad</default>
+            <en>Riyadh</en>
+            <de>Riad</de>
+            <pl>Riad</pl>
+        </capital>
+        <flag path="Banderas/Asia/ArabiaSaudita.png" />
+    </country>
+    <country>
+        <name>
+            <default>Armenia</default>
+            <en>Armenia</en>
+            <de>Armenien</de>
+            <pl>Armenia</pl>
+        </name>
+        <capital>
+            <default>Ereván</default>
+            <en>Yerevan</en>
+            <de>Jereván</de>
+            <pl>Jerewan</pl>
+        </capital>
+        <flag path="Banderas/Asia/Armenia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Azerbaiyán</default>
+            <en>Azerbaijan</en>
+            <de>Aserbaidschán</de>
+            <pl>Azerbejdżan</pl>
+        </name>
+        <capital>
+            <default>Bakú</default>
+            <en>Baku</en>
+            <de>Baku</de>
+            <pl>Baku</pl>
+        </capital>
+        <flag path="Banderas/Asia/Azerbaiyan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bahrein</default>
+            <en>Bahrain</en>
+            <de>Bahrain</de>
+            <pl>Bahrain</pl>
+        </name>
+        <capital>
+            <default>Manama</default>
+            <en>Manama</en>
+            <de>Manama</de>
+            <pl>Manama</pl>
+        </capital>
+        <flag path="Banderas/Asia/Bahrein.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bangladesh</default>
+            <en>Bangladesh</en>
+            <de>Bangladesch</de>
+            <pl>Bangladesz</pl>
+        </name>
+        <capital>
+            <default>Dhaka</default>
+            <en>Dhaka</en>
+            <de>Dhaka</de>
+            <pl>Dhaka</pl>
+        </capital>
+        <flag path="Banderas/Asia/Bangladesh.png" />
+    </country>
+    <country>
+        <name>
+            <default>Birmania</default>
+            <en>Myanmar</en>
+            <de>Myanmar</de>
+            <pl>Mjanma</pl>
+        </name>
+        <capital>
+            <default>Naypyidaw</default>
+            <en>Naypyidaw</en>
+            <de>Naypyidaw</de>
+            <pl>Naypyidaw</pl>
+        </capital>
+        <flag path="Banderas/Asia/Birmania.png" />
+    </country>
+    <country>
+        <name>
+            <default>Brunéi</default>
+            <en>Brunei</en>
+            <de>Brunei</de>
+            <pl>Brunei</pl>
+        </name>
+        <capital>
+            <default>Bandar Seri Begawan</default>
+            <en>Bandar Seri Begawan</en>
+            <de>Bandar Seri Begawan</de>
+            <pl>Bandar Seri Begawan</pl>
+        </capital>
+        <flag path="Banderas/Asia/Brunei.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bután</default>
+            <en>Bhutan</en>
+            <de>Bhutan</de>
+            <pl>Bhutan</pl>
+        </name>
+        <capital>
+            <default>Thimphu</default>
+            <en>Thimphu</en>
+            <de>Thimphu</de>
+            <pl>Thimphu</pl>
+        </capital>
+        <flag path="Banderas/Asia/Butan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Camboya</default>
+            <en>Cambodia</en>
+            <de>Kambodscha</de>
+            <pl>Kambodża</pl>
+        </name>
+        <capital>
+            <default>Phnom Penh</default>
+            <en>Phnom Penh</en>
+            <de>Phnom Penh</de>
+            <pl>Phnom Penh</pl>
+        </capital>
+        <flag path="Banderas/Asia/Camboya.png" />
+    </country>
+    <country>
+        <name>
+            <default>Catar</default>
+            <en>Qatar</en>
+            <de>Katar</de>
+            <pl>Katar</pl>
+        </name>
+        <capital>
+            <default>Doha</default>
+            <en>Doha</en>
+            <de>Doha</de>
+            <pl>Doha</pl>
+        </capital>
+        <flag path="Banderas/Asia/Catar.png" />
+    </country>
+    <country>
+        <name>
+            <default>China</default>
+            <en>China</en>
+            <de>China</de>
+            <pl>Chiny</pl>
+        </name>
+        <capital>
+            <default>Pekín</default>
+            <en>Beijing</en>
+            <de>Peking</de>
+            <pl>Pekin</pl>
+        </capital>
+        <flag path="Banderas/Asia/China.png" />
+    </country>
+    <country>
+        <name>
+            <default>Emiratos Árabes Unidos</default>
+            <en>United Arab Emirates</en>
+            <de>Vereinigte Arabische Emirate</de>
+            <pl>Zjednoczone Emiraty Arabskie</pl>
+        </name>
+        <capital>
+            <default>Abu Dabi</default>
+            <en>Abu Dhabi</en>
+            <de>Abu Dhabi</de>
+            <pl>Abu Zabi</pl>
+        </capital>
+        <flag path="Banderas/Asia/EmiratosArabesUnidos.png" />
+    </country>
+    <country>
+        <name>
+            <default>Filipinas</default>
+            <en>Philippines</en>
+            <de>Philippinen</de>
+            <pl>Filipiny</pl>
+        </name>
+        <capital>
+            <default>Manila</default>
+            <en>Manila</en>
+            <de>Manila</de>
+            <pl>Manila</pl>
+        </capital>
+        <flag path="Banderas/Asia/Filipinas.png" />
+    </country>
+    <country>
+        <name>
+            <default>Georgia</default>
+            <en>Georgia</en>
+            <de>Georgien</de>
+            <pl>Gruzja</pl>
+        </name>
+        <capital>
+            <default>Tiflis</default>
+            <en>Tbilisi</en>
+            <de>Tiflis</de>
+            <pl>Tbilisi</pl>
+        </capital>
+        <flag path="Banderas/Asia/Georgia.png" />
+    </country>
+    <country>
+        <name>
+            <default>India</default>
+            <en>India</en>
+            <de>Indien</de>
+            <pl>Indie</pl>
+        </name>
+        <capital>
+            <default>Nueva Delhi</default>
+            <en>New Delhi</en>
+            <de>Neu-Delhi</de>
+            <pl>Nowe Delhi</pl>
+        </capital>
+        <flag path="Banderas/Asia/India.png" />
+    </country>
+    <country>
+        <name>
+            <default>Indonesia</default>
+            <en>Indonesia</en>
+            <de>Indonesien</de>
+            <pl>Indonezja</pl>
+        </name>
+        <capital>
+            <default>Yakarta</default>
+            <en>Jakarta</en>
+            <de>Jakarta</de>
+            <pl>Jakarta</pl>
+        </capital>
+        <flag path="Banderas/Asia/Indonesia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Irán</default>
+            <en>Iran</en>
+            <de>Iran</de>
+            <pl>Iran</pl>
+        </name>
+        <capital>
+            <default>Teherán</default>
+            <en>Tehran</en>
+            <de>Teheran</de>
+            <pl>Teheran</pl>
+        </capital>
+        <flag path="Banderas/Asia/Iran.png" />
+    </country>
+    <country>
+        <name>
+            <default>Iraq</default>
+            <en>Iraq</en>
+            <de>Irak</de>
+            <pl>Irak</pl>
+        </name>
+        <capital>
+            <default>Bagdad</default>
+            <en>Baghdad</en>
+            <de>Bagdad</de>
+            <pl>Bagdad</pl>
+        </capital>
+        <flag path="Banderas/Asia/Iraq.png" />
+    </country>
+    <country>
+        <name>
+            <default>Israel</default>
+            <en>Israel</en>
+            <de>Israel</de>
+            <pl>Izrael</pl>
+        </name>
+        <capital>
+            <default>Jerusalén</default>
+            <en>Jerusalem</en>
+            <de>Jerusalem</de>
+            <pl>Jerozolima</pl>
+        </capital>
+        <flag path="Banderas/Asia/Israel.png" />
+    </country>
+    <country>
+        <name>
+            <default>Japón</default>
+            <en>Japan</en>
+            <de>Japan</de>
+            <pl>Japonia</pl>
+        </name>
+        <capital>
+            <default>Tokio</default>
+            <en>Tokyo</en>
+            <de>Tokio</de>
+            <pl>Tokio</pl>
+        </capital>
+        <flag path="Banderas/Asia/Japon.png" />
+    </country>
+    <country>
+        <name>
+            <default>Jordania</default>
+            <en>Jordan</en>
+            <de>Jordanien</de>
+            <pl>Jordania</pl>
+        </name>
+        <capital>
+            <default>Amán</default>
+            <en>Amman</en>
+            <de>Amman</de>
+            <pl>Amman</pl>
+        </capital>
+        <flag path="Banderas/Asia/Jordania.png" />
+    </country>
+    <country>
+        <name>
+            <default>Kazajistán</default>
+            <en>Kazakhstan</en>
+            <de>Kasachstan</de>
+            <pl>Kazachstan</pl>
+        </name>
+        <capital>
+            <default>Astaná</default>
+            <en>Astana</en>
+            <de>Astana</de>
+            <pl>Astana</pl>
+        </capital>
+        <flag path="Banderas/Asia/Kazajistan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Kirguistán</default>
+            <en>Kyrgyzstan</en>
+            <de>Kirgistan</de>
+            <pl>Kirgistan</pl>
+        </name>
+        <capital>
+            <default>Biskek</default>
+            <en>Bishkek</en>
+            <de>Bischkek</de>
+            <pl>Biszczek</pl>
+        </capital>
+        <flag path="Banderas/Asia/Kirguistan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Kuwait</default>
+            <en>Kuwait</en>
+            <de>Kuwait</de>
+            <pl>Kuwejt</pl>
+        </name>
+        <capital>
+            <default>Kuwait</default>
+            <en>Kuwait</en>
+            <de>Kuwait</de>
+            <pl>Kuwejt</pl>
+        </capital>
+        <flag path="Banderas/Asia/Kuwait.png" />
+    </country>
+    <country>
+        <name>
+            <default>Laos</default>
+            <en>Laos</en>
+            <de>Laos</de>
+            <pl>Laos</pl>
+        </name>
+        <capital>
+            <default>Vientián</default>
+            <en>Vientiane</en>
+            <de>Vientiane</de>
+            <pl>Wientian</pl>
+        </capital>
+        <flag path="Banderas/Asia/Laos.png" />
+    </country>
+    <country>
+        <name>
+            <default>Líbano</default>
+            <en>Lebanon</en>
+            <de>Libanon</de>
+            <pl>Liban</pl>
+        </name>
+        <capital>
+            <default>Beirut</default>
+            <en>Beirut</en>
+            <de>Beirut</de>
+            <pl>Bejrut</pl>
+        </capital>
+        <flag path="Banderas/Asia/Libano.png" />
+    </country>
+    <country>
+        <name>
+            <default>Malasia</default>
+            <en>Malaysia</en>
+            <de>Malaysia</de>
+            <pl>Malezja</pl>
+        </name>
+        <capital>
+            <default>Kuala Lumpur</default>
+            <en>Kuala Lumpur</en>
+            <de>Kuala Lumpur</de>
+            <pl>Kuala Lumpur</pl>
+        </capital>
+        <flag path="Banderas/Asia/Malasia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Maldivas</default>
+            <en>Maldives</en>
+            <de>Maldiven</de>
+            <pl>Malediwy</pl>
+        </name>
+        <capital>
+            <default>Malé</default>
+            <en>Male</en>
+            <de>Male</de>
+            <pl>Malé</pl>
+        </capital>
+        <flag path="Banderas/Asia/Maldivas.png" />
+    </country>
+    <country>
+        <name>
+            <default>Mongolia</default>
+            <en>Mongolia</en>
+            <de>Mongolei</de>
+            <pl>Mongolia</pl>
+        </name>
+        <capital>
+            <default>Ulán Bator</default>
+            <en>Ulaanbaatar</en>
+            <de>Ulaanbaatar</de>
+            <pl>Ułan Bator</pl>
+        </capital>
+        <flag path="Banderas/Asia/Mongolia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Nepal</default>
+            <en>Nepal</en>
+            <de>Nepal</de>
+            <pl>Nepal</pl>
+        </name>
+        <capital>
+            <default>Katmandú</default>
+            <en>Kathmandu</en>
+            <de>Kathmandu</de>
+            <pl>Kathmandu</pl>
+        </capital>
+        <flag path="Banderas/Asia/Nepal.png" />
+    </country>
+    <country>
+        <name>
+            <default>Omán</default>
+            <en>Oman</en>
+            <de>Oman</de>
+            <pl>Oman</pl>
+        </name>
+        <capital>
+            <default>Muscat</default>
+            <en>Muscat</en>
+            <de>Muskat</de>
+            <pl>Muskat</pl>
+        </capital>
+        <flag path="Banderas/Asia/Oman.png" />
+    </country>
+    <country>
+        <name>
+            <default>Pakistán</default>
+            <en>Pakistan</en>
+            <de>Pakistan</de>
+            <pl>Pakistan</pl>
+        </name>
+        <capital>
+            <default>Islamabad</default>
+            <en>Islamabad</en>
+            <de>Islamabad</de>
+            <pl>Islamabad</pl>
+        </capital>
+        <flag path="Banderas/Asia/Pakistan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Singapur</default>
+            <en>Singapore</en>
+            <de>Singapur</de>
+            <pl>Singapur</pl>
+        </name>
+        <capital>
+            <default>Singapur</default>
+            <en>Singapore</en>
+            <de>Singapur</de>
+            <pl>Singapur</pl>
+        </capital>
+        <flag path="Banderas/Asia/Singapur.png" />
+    </country>
+    <country>
+        <name>
+            <default>Siria</default>
+            <en>Syria</en>
+            <de>Syrien</de>
+            <pl>Syria</pl>
+        </name>
+        <capital>
+            <default>Damasco</default>
+            <en>Damascus</en>
+            <de>Damaskus</de>
+            <pl>Damask</pl>
+        </capital>
+        <flag path="Banderas/Asia/Siria.png" />
+    </country>
+    <country>
+        <name>
+            <default>Sri Lanka</default>
+            <en>Sri Lanka</en>
+            <de>Sri Lanka</de>
+            <pl>Sri Lanka</pl>
+        </name>
+        <capital>
+            <default>Colombo</default>
+            <en>Colombo</en>
+            <de>Colombo</de>
+            <pl>Colombo</pl>
+        </capital>
+        <flag path="Banderas/Asia/Srilanka.png" />
+    </country>
+    <country>
+        <name>
+            <default>Tailandia</default>
+            <en>Thailand</en>
+            <de>Thailand</de>
+            <pl>Tajlandia</pl>
+        </name>
+        <capital>
+            <default>Bangkok</default>
+            <en>Bangkok</en>
+            <de>Bangkok</de>
+            <pl>Bangkok</pl>
+        </capital>
+        <flag path="Banderas/Asia/Tailandia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Taiwán</default>
+            <en>Taiwan</en>
+            <de>Taiwan</de>
+            <pl>Tajwan</pl>
+        </name>
+        <capital>
+            <default>Taipéi</default>
+            <en>Taipei</en>
+            <de>Taipei</de>
+            <pl>Taipaj</pl>
+        </capital>
+        <flag path="Banderas/Asia/Taiwan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Tayikistán</default>
+            <en>Tajikistan</en>
+            <de>Tadschikistan</de>
+            <pl>Tadżykistan</pl>
+        </name>
+        <capital>
+            <default>Dusambé</default>
+            <en>Dushanbe</en>
+            <de>Dushanbe</de>
+            <pl>Duszambe</pl>
+        </capital>
+        <flag path="Banderas/Asia/Tayikistan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Timor Oriental</default>
+            <en>East Timor</en>
+            <de>Osttimor</de>
+            <pl>Timor Wschodni</pl>
+        </name>
+        <capital>
+            <default>Díli</default>
+            <en>Dili</en>
+            <de>Dili</de>
+            <pl>Dili</pl>
+        </capital>
+        <flag path="Banderas/Asia/TimorOriental.png" />
+    </country>
+    <country>
+        <name>
+            <default>Turkmenistán</default>
+            <en>Turkmenistan</en>
+            <de>Turkmenistan</de>
+            <pl>Turkmenistan</pl>
+        </name>
+        <capital>
+            <default>Asjabad</default>
+            <en>Ashgabat</en>
+            <de>Ashgabat</de>
+            <pl>Ashgabat</pl>
+        </capital>
+        <flag path="Banderas/Asia/Turkmenistan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Turquía</default>
+            <en>Turkey</en>
+            <de>Türkei</de>
+            <pl>Turcja</pl>
+        </name>
+        <capital>
+            <default>Ankara</default>
+            <en>Ankara</en>
+            <de>Ankara</de>
+            <pl>Ankara</pl>
+        </capital>
+        <flag path="Banderas/Asia/Turquia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Uzbekistán</default>
+            <en>Uzbekistan</en>
+            <de>Usbekistan</de>
+            <pl>Uzbekistan</pl>
+        </name>
+        <capital>
+            <default>Taskent</default>
+            <en>Tashkent</en>
+            <de>Tashkent</de>
+            <pl>Taskent</pl>
+        </capital>
+        <flag path="Banderas/Asia/Uzbekistan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Vietnam</default>
+            <en>Vietnam</en>
+            <de>Vietnam</de>
+            <pl>Wietnam</pl>
+        </name>
+        <capital>
+            <default>Hanói</default>
+            <en>Hanoi</en>
+            <de>Hanoi</de>
+            <pl>Hanoi</pl>
+        </capital>
+        <flag path="Banderas/Asia/Vietnam.png" />
+    </country>
+    <country>
+        <name>
+            <default>Yemen</default>
+            <en>Yemen</en>
+            <de>Jemen</de>
+            <pl>Jemen</pl>
+        </name>
+        <capital>
+            <default>Saná</default>
+            <en>Sana'a</en>
+            <de>Sanaa</de>
+            <pl>Sana</pl>
+        </capital>
+        <flag path="Banderas/Asia/Yemen.png" />
+    </country>
+</countries>

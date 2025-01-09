@@ -7,10 +7,10 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 class MenuRegionSelectionActivity : AppCompatActivity() {
-    private var volumen=true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_region_selection)
+        setupVolumeButton()
         val opcion = intent.getStringExtra("Tipo")
 
 
@@ -19,19 +19,6 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
         imageButtonVolver.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-        }
-
-        val imageButtonVolumen: ImageButton = findViewById(R.id.imageButtonVolumen)
-
-        imageButtonVolumen.setOnClickListener {
-            if (volumen) {
-                imageButtonVolumen.setImageResource(R.drawable.iconovolumenapagado)
-                volumen=false
-            } else {
-                imageButtonVolumen.setImageResource(R.drawable.iconovolumenencendido)
-                volumen=true
-            }
-            // Alternar el estado
         }
 
         val buttonEuropa: Button = findViewById(R.id.buttonEuropa)
@@ -72,6 +59,37 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
             intent.putExtra("Tipo", opcion)
             intent.putExtra("Region", "Oceania")
             startActivity(intent)
+        }
+    }
+    override fun onBackPressed() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun setupVolumeButton() {
+        val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)
+
+        // Obtener SharedPreferences
+        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
+
+        // Actualizar el estado del botón
+        fun updateButtonState(isVolumeOn: Boolean) {
+            if (isVolumeOn) {
+                volumeButton.setImageResource(R.drawable.iconovolumenencendido)
+            } else {
+                volumeButton.setImageResource(R.drawable.iconovolumenapagado)
+            }
+        }
+
+        // Inicializar el estado del botón
+        updateButtonState(isVolumeOn)
+
+        // Configurar el listener del botón
+        volumeButton.setOnClickListener {
+            val newState = !sharedPreferences.getBoolean("volume_state", true)
+            sharedPreferences.edit().putBoolean("volume_state", newState).apply()
+            updateButtonState(newState)
         }
     }
 }
