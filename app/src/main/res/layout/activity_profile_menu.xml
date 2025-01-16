@@ -73,6 +73,7 @@
         android:fontFamily="@font/bungee_regular"
         android:paddingBottom="9dp"
         android:text="@string/ajustes"
+        android:enabled="false"
         android:textColor="#6F5D47"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

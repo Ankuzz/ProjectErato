@@ -96,26 +96,29 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun botones(){
-        val buttonBanderas: Button = findViewById(R.id.buttonBanderas)
-        buttonBanderas.setOnClickListener {
-            val intent = Intent(this, MenuRegionSelectionActivity::class.java)
-            intent.putExtra("Tipo", "Banderas")
-            startActivity(intent)
-        }
-
         val buttonPaises: Button = findViewById(R.id.buttonPaises)
         buttonPaises.setOnClickListener {
             val intent = Intent(this, MenuRegionSelectionActivity::class.java)
             intent.putExtra("Tipo", "Paises")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
-
         val buttonCapitales: Button = findViewById(R.id.buttonCapitales)
         buttonCapitales.setOnClickListener {
             val intent = Intent(this, MenuRegionSelectionActivity::class.java)
             intent.putExtra("Tipo", "Capitales")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
+
+        val buttonMixto: Button = findViewById(R.id.buttonMixto)
+        buttonMixto.setOnClickListener {
+            val intent = Intent(this, MenuRegionSelectionActivity::class.java)
+            intent.putExtra("Tipo", "Mixto")
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
         val imageButtonMenu: ImageButton = findViewById(R.id.imageButtonMenu)
 
         val bundle : Bundle? = intent.extras
@@ -128,6 +131,7 @@ class MainActivity : AppCompatActivity() {
                 putExtra("provider", provider)
             }
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
     }
 }

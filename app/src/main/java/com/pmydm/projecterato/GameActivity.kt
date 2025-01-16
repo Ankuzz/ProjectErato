@@ -8,6 +8,7 @@ import android.os.Handler
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -58,6 +59,7 @@ class GameActivity : AppCompatActivity() {
                 putExtra("Tipo", opcion) // Pasar el tipo de juego
             }
             startActivity(intent)
+            overridePendingTransition(0, 0)
             finish() // Asegurarse de que la actividad actual se cierre
         }
 
@@ -107,6 +109,7 @@ class GameActivity : AppCompatActivity() {
             putExtra("Tipo", opcion) // Pasar el tipo de juego
         }
         startActivity(intent)
+        overridePendingTransition(0, 0)
         finish() // Asegurarse de que la actividad actual se cierre
     }
 
@@ -137,61 +140,71 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    // Método para comprobar si la respuesta seleccionada es correcta
     private fun checkAnswer(selectedButton: ImageButton) {
         // Deshabilitar todos los botones después de hacer clic
         disableButtons()
 
-        // Obtener el contentDescription del botón presionado
-        val selectedButtonDescription = selectedButton.contentDescription
+        // Obtener los layouts de los botones
+        val buttonLayouts = arrayOf(button1.parent as LinearLayout, button2.parent as LinearLayout, button3.parent as LinearLayout, button4.parent as LinearLayout)
 
-        // Verificar si el contentDescription del botón presionado coincide con la bandera correcta
-        if (selectedButtonDescription == correctFlag) {
-            // Respuesta correcta
-            aciertos++
-            buttonText.text = "¡Correcto!"
-        } else {
-            // Respuesta incorrecta
-            fallos++
-            buttonText.text = "Incorrecto."
+        // Recorrer los botones y cambiar el fondo
+        for (buttonLayout in buttonLayouts) {
+            val button = buttonLayout.getChildAt(0) as ImageButton // Obtener el botón dentro del LinearLayout
+
+            // Si el botón tiene la respuesta correcta
+            if (button.contentDescription == correctFlag) {
+                buttonLayout.setBackgroundColor(getColor(R.color.lime_green))  // Cambiar el fondo del layout a verde
+                if(button == selectedButton) {
+                    aciertos++
+                } // Incrementar aciertos si es correcto
+            } else {
+                buttonLayout.setBackgroundColor(getColor(R.color.red))  // Cambiar el fondo del layout a rojo
+                if (button == selectedButton) {
+                    fallos++  // Incrementar fallos si el botón seleccionado es incorrecto
+                }
+            }
         }
 
-        // Pausar 3 segundos antes de cambiar a la siguiente pregunta o terminar el juego
+        // Pausar 3 segundos antes de la siguiente pregunta
         Handler().postDelayed({
-            // Verificar si quedan más preguntas
-            if (gameHelper.isGameOver()) { // Método para verificar si el juego terminó
-                endGame() // Llamar al método de fin de juego
+            if (gameHelper.isGameOver()) {
+                endGame()
                 return@postDelayed
             }
 
-            // Actualizar la siguiente pregunta
+            // Restablecer el fondo de todos los layouts a transparente
+            for (buttonLayout in buttonLayouts) {
+                buttonLayout.setBackgroundColor(getColor(android.R.color.transparent))  // Establecer fondo transparente
+            }
+
+            // Restablecer los botones
+            button1.setImageResource(0)
+            button2.setImageResource(0)
+            button3.setImageResource(0)
+            button4.setImageResource(0)
+
             gameHelper.getNextQuestion()
-
-            // Guardamos la nueva bandera correcta
-            val newFlags = gameHelper.getFlagsList().toMutableList()
-            correctFlag = newFlags[0] // Actualizar la bandera correcta con la nueva lista de banderas
-
-            // Hacer el shuffle de las nuevas banderas
-            newFlags.shuffle()
-
-            // Actualizar las banderas en los botones
-            button1.setImageBitmap(loadImageFromAssets(newFlags[0]))
-            button2.setImageBitmap(loadImageFromAssets(newFlags[1]))
-            button3.setImageBitmap(loadImageFromAssets(newFlags[2]))
-            button4.setImageBitmap(loadImageFromAssets(newFlags[3]))
-
-            // Asignar contentDescription con el nombre de la bandera
-            button1.contentDescription = newFlags[0]
-            button2.contentDescription = newFlags[1]
-            button3.contentDescription = newFlags[2]
-            button4.contentDescription = newFlags[3]
-
-            // Mostrar el nuevo nombre o capital
-            buttonText.text = gameHelper.getCountryNameOrCapital()
-
-            // Habilitar los botones nuevamente después de la espera
+            setupNewQuestion()
             enableButtons()
-        }, 3000) // 3 segundos de espera
+        }, 1000)
+    }
+
+    private fun setupNewQuestion() {
+        val flags = gameHelper.getFlagsList().toMutableList()
+        correctFlag = flags[0]
+        flags.shuffle()
+
+        button1.setImageBitmap(loadImageFromAssets(flags[0]))
+        button2.setImageBitmap(loadImageFromAssets(flags[1]))
+        button3.setImageBitmap(loadImageFromAssets(flags[2]))
+        button4.setImageBitmap(loadImageFromAssets(flags[3]))
+
+        button1.contentDescription = flags[0]
+        button2.contentDescription = flags[1]
+        button3.contentDescription = flags[2]
+        button4.contentDescription = flags[3]
+
+        buttonText.text = gameHelper.getCountryNameOrCapital()
     }
 
 
@@ -227,6 +240,7 @@ class GameActivity : AppCompatActivity() {
             putExtra("fallos", fallos)
         }
         startActivity(intent)
+        overridePendingTransition(0, 0)
         finish() // Termina la actividad actual si es necesario
     }
 }

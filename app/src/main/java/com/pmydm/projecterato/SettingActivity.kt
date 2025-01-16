@@ -16,11 +16,13 @@ class SettingActivity : AppCompatActivity() {
         imageButtonVolver.setOnClickListener {
             val intent = Intent(this, ProfileMenuActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
     }
     override fun onBackPressed() {
         val intent = Intent(this, ProfileMenuActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(0, 0)
     }
     private fun setupVolumeButton() {
         val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)

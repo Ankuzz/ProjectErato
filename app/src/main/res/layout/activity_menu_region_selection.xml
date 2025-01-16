@@ -126,4 +126,18 @@
         app:srcCompat="@drawable/flecha"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
+    <ImageButton
+        android:id="@+id/imageButtonSeleccionCantidad"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_square_background"
+        android:contentDescription="@string/botonCantidad"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/infinito"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
-import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileMenuActivity : AppCompatActivity() {
@@ -20,6 +19,7 @@ class ProfileMenuActivity : AppCompatActivity() {
         imageButtonVolver.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val buttonAjustes: Button = findViewById(R.id.buttonAjustes)
@@ -27,6 +27,7 @@ class ProfileMenuActivity : AppCompatActivity() {
         buttonAjustes.setOnClickListener {
             val intent = Intent(this, SettingActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val bundle : Bundle? = intent.extras
@@ -38,6 +39,7 @@ class ProfileMenuActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(0, 0)
     }
 
     private fun setupVolumeButton() {
@@ -79,6 +81,14 @@ class ProfileMenuActivity : AppCompatActivity() {
             prefs.apply()
             val intent: Intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
+        val buttonIdioma : Button = findViewById(R.id.buttonIdioma)
+        buttonIdioma.setOnClickListener {
+            val intent = Intent(this, LanguageActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
         }
     }
 }

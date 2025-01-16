@@ -19,6 +19,7 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
         imageButtonVolver.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val buttonEuropa: Button = findViewById(R.id.buttonEuropa)
@@ -27,6 +28,7 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
             intent.putExtra("Tipo", opcion)
             intent.putExtra("Region", "Europa")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val buttonAsia: Button = findViewById(R.id.buttonAsia)
@@ -35,6 +37,7 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
             intent.putExtra("Tipo", opcion)
             intent.putExtra("Region", "Asia")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val buttonAfrica: Button = findViewById(R.id.buttonAfrica)
@@ -43,6 +46,7 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
             intent.putExtra("Tipo", opcion)
             intent.putExtra("Region", "Africa")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val buttonAmerica: Button = findViewById(R.id.buttonAmerica)
@@ -51,6 +55,7 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
             intent.putExtra("Tipo", opcion)
             intent.putExtra("Region", "America")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
 
         val buttonOceania: Button = findViewById(R.id.buttonOceania)
@@ -59,11 +64,46 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
             intent.putExtra("Tipo", opcion)
             intent.putExtra("Region", "Oceania")
             startActivity(intent)
+            overridePendingTransition(0, 0)
         }
+        val imageButtonSeleccionCantidad = findViewById<ImageButton>(R.id.imageButtonSeleccionCantidad)
+        val currentState = getButtonState()
+
+        if (currentState == "infinito") {
+            imageButtonSeleccionCantidad.setImageResource(R.drawable.infinito)
+        } else {
+            imageButtonSeleccionCantidad.setImageResource(R.drawable.diez)
+        }
+
+        imageButtonSeleccionCantidad.setOnClickListener {
+            val currentState2 = getButtonState()
+
+            if (currentState2 == "infinito") {
+                imageButtonSeleccionCantidad.setImageResource(R.drawable.diez)
+                saveButtonState("10")  // Guardar el nuevo estado
+            } else {
+                imageButtonSeleccionCantidad.setImageResource(R.drawable.infinito)
+                saveButtonState("infinito")  // Guardar el estado "infinito"
+            }
+        }
+
     }
+    private fun getButtonState(): String {
+        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        return sharedPreferences.getString("button_state", "infinito") ?: "infinito"
+    }
+
+    private fun saveButtonState(state: String) {
+        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("button_state", state)
+        editor.apply()
+    }
+
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+        overridePendingTransition(0, 0)
     }
 
     private fun setupVolumeButton() {

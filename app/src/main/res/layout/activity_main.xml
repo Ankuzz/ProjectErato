@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonBanderas"
+        android:id="@+id/buttonPaises"
         android:layout_width="191dp"
         android:layout_height="100dp"
         android:layout_marginStart="110dp"
@@ -19,7 +19,7 @@
         android:background="@drawable/button_background"
         android:fontFamily="@font/bungee_regular"
         android:paddingBottom="9dp"
-        android:text="@string/banderas"
+        android:text="@string/paises"
         android:textColor="#6F5D47"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonCapitales"
@@ -39,22 +39,21 @@
         android:text="@string/capitales"
         android:textColor="#6F5D47"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonPaises"
+        app:layout_constraintBottom_toTopOf="@+id/buttonMixto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonPaises"
+        android:id="@+id/buttonMixto"
         android:layout_width="191dp"
         android:layout_height="100dp"
         android:layout_marginBottom="64dp"
         android:background="@drawable/button_background"
         android:fontFamily="@font/bungee_regular"
         android:paddingBottom="9dp"
-        android:text="@string/paises"
+        android:text="@string/mixto"
         android:textColor="#6F5D47"
         android:textSize="18sp"
-        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

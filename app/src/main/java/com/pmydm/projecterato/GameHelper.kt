@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserFactory
+import kotlin.random.Random
 
 data class Country(
     val name: String,
@@ -22,6 +23,7 @@ class GameHelper(val gameType: String, val region: String, val context: Context)
     private var secondaryCountriesList: MutableList<Country> = mutableListOf()
     private var flagsList: MutableList<String> = mutableListOf()
     private var countryNameOrCapital: String = ""
+    private var countriesShownCount: Int = 0
 
     init {
         loadGameData()
@@ -33,8 +35,19 @@ class GameHelper(val gameType: String, val region: String, val context: Context)
         secondaryCountriesList = countries.toMutableList()
     }
 
+    private fun getButtonState(): String {
+        val sharedPreferences = context.getSharedPreferences("prefs_file", Context.MODE_PRIVATE)
+        return sharedPreferences.getString("button_state", "infinito") ?: "infinito"
+    }
+
     fun isGameOver(): Boolean {
-        return countriesList.isEmpty()
+        val buttonState = getButtonState()
+
+        return when (buttonState) {
+            "infinito" -> countriesList.isEmpty()  // Juego termina cuando no hay más países
+            "10" -> countriesShownCount >= 10  // Juego termina después de 10 países mostrados
+            else -> countriesList.isEmpty()
+        }
     }
 
 
@@ -43,7 +56,17 @@ class GameHelper(val gameType: String, val region: String, val context: Context)
 
         val mainCountry = countriesList.random()
 
-        countryNameOrCapital = if (gameType == "Banderas") mainCountry.name else mainCountry.capital
+
+
+        countryNameOrCapital = when (gameType) {
+            "Paises" -> mainCountry.name
+            "Capitales" -> mainCountry.capital
+            "Mixto" -> {
+                if (Random.nextBoolean()) mainCountry.name else mainCountry.capital
+            }
+            else -> mainCountry.name  // Valor por defecto en caso de que gameType no sea reconocido
+        }
+
 
         countriesList.remove(mainCountry)
         flagsList.clear()
@@ -59,6 +82,9 @@ class GameHelper(val gameType: String, val region: String, val context: Context)
         incorrectCountries.forEach { country ->
             flagsList.add(country.flag.path)
         }
+
+        // Aumentar el contador de países mostrados
+        countriesShownCount++
     }
 
 
@@ -113,6 +139,10 @@ class GameHelper(val gameType: String, val region: String, val context: Context)
         val countryList = mutableListOf<Country>()
 
         try {
+            // Obtener el código de idioma desde las preferencias
+            val sharedPreferences = context.getSharedPreferences("prefs_file", Context.MODE_PRIVATE)
+            val languageCode = sharedPreferences.getString("language_code", "es") ?: "es" // Por defecto a "es"
+
             val parserFactory = XmlPullParserFactory.newInstance()
             val parser = parserFactory.newPullParser()
 
@@ -138,9 +168,11 @@ class GameHelper(val gameType: String, val region: String, val context: Context)
                             }
                             "name" -> insideName = true
                             "capital" -> insideCapital = true
-                            "default" -> {
-                                if (insideName) name = parser.nextText()
-                                if (insideCapital) capital = parser.nextText()
+                            "default", "en", "de", "pl" -> {
+                                if (parser.name == languageCode || (languageCode == "es" && parser.name == "default")) {
+                                    if (insideName) name = parser.nextText()
+                                    if (insideCapital) capital = parser.nextText()
+                                }
                             }
                             "flag" -> flagPath = parser.getAttributeValue(null, "path")
                         }
@@ -170,9 +202,9 @@ class GameHelper(val gameType: String, val region: String, val context: Context)
             e.printStackTrace()
         }
 
-
         return countryList
     }
+
 
 
     fun getFlagsList(): List<String> {
