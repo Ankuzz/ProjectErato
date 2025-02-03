@@ -1,15 +1,19 @@
 package com.pmydm.projecterato
 
 import android.content.Intent
+import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class MenuRegionSelectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_region_selection)
+        applyBackground()
         setupVolumeButton()
         val opcion = intent.getStringExtra("Tipo")
 
@@ -71,8 +75,10 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
 
         if (currentState == "infinito") {
             imageButtonSeleccionCantidad.setImageResource(R.drawable.infinito)
-        } else {
+        } else if (currentState=="10") {
             imageButtonSeleccionCantidad.setImageResource(R.drawable.diez)
+        } else {
+            imageButtonSeleccionCantidad.setImageResource(R.drawable.alfallo)
         }
 
         imageButtonSeleccionCantidad.setOnClickListener {
@@ -81,13 +87,29 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
             if (currentState2 == "infinito") {
                 imageButtonSeleccionCantidad.setImageResource(R.drawable.diez)
                 saveButtonState("10")  // Guardar el nuevo estado
+            } else if (currentState2=="10") {
+                imageButtonSeleccionCantidad.setImageResource(R.drawable.alfallo)
+                saveButtonState("alfallo")  // Guardar el estado "infinito"
             } else {
                 imageButtonSeleccionCantidad.setImageResource(R.drawable.infinito)
                 saveButtonState("infinito")  // Guardar el estado "infinito"
             }
         }
-
     }
+    private fun applyBackground() {
+        val prefs: SharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val fondoGuardado = prefs.getString("fondo", "fondoapp")
+
+        // Obtener el layout raíz de la actividad
+        val rootLayout: ConstraintLayout = findViewById(R.id.rootLayout)
+
+        when (fondoGuardado) {
+            "fondoapp" -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+            "fondochina" -> rootLayout.setBackgroundResource(R.drawable.fondochina)
+            else -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+        }
+    }
+
     private fun getButtonState(): String {
         val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
         return sharedPreferences.getString("button_state", "infinito") ?: "infinito"
@@ -106,12 +128,13 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
         overridePendingTransition(0, 0)
     }
 
+
     private fun setupVolumeButton() {
         val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)
 
         // Obtener SharedPreferences
         val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
-        val isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
+        var isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
 
         // Actualizar el estado del botón
         fun updateButtonState(isVolumeOn: Boolean) {
@@ -127,9 +150,17 @@ class MenuRegionSelectionActivity : AppCompatActivity() {
 
         // Configurar el listener del botón
         volumeButton.setOnClickListener {
-            val newState = !sharedPreferences.getBoolean("volume_state", true)
-            sharedPreferences.edit().putBoolean("volume_state", newState).apply()
-            updateButtonState(newState)
+            isVolumeOn = !isVolumeOn // Cambiar el estado de volumen
+            sharedPreferences.edit().putBoolean("volume_state", isVolumeOn).apply()
+            updateButtonState(isVolumeOn)
+
+            // Crear un Intent para iniciar o detener el servicio
+            val musicServiceIntent = Intent(this, MusicService::class.java)
+            if (isVolumeOn) {
+                startService(musicServiceIntent) // Iniciar servicio si el volumen está activado
+            } else {
+                stopService(musicServiceIntent) // Detener servicio si el volumen está desactivado
+            }
         }
     }
 }

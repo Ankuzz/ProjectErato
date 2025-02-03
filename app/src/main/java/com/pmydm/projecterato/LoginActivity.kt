@@ -1,8 +1,8 @@
 package com.pmydm.projecterato
 
-import android.content.Context
 import android.content.Intent
-import android.media.Image
+import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -12,10 +12,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -24,6 +22,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        applyBackground()
 
         setupVolumeButton()
 
@@ -34,30 +34,17 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun setupVolumeButton() {
-        val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)
+    private fun applyBackground() {
+        val prefs: SharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val fondoGuardado = prefs.getString("fondo", "fondoapp")
 
-        // Obtener SharedPreferences
-        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
-        val isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
+        // Obtener el layout raíz de la actividad
+        val rootLayout: ConstraintLayout = findViewById(R.id.rootLayout)
 
-        // Actualizar el estado del botón
-        fun updateButtonState(isVolumeOn: Boolean) {
-            if (isVolumeOn) {
-                volumeButton.setImageResource(R.drawable.iconovolumenencendido)
-            } else {
-                volumeButton.setImageResource(R.drawable.iconovolumenapagado)
-            }
-        }
-
-        // Inicializar el estado del botón
-        updateButtonState(isVolumeOn)
-
-        // Configurar el listener del botón
-        volumeButton.setOnClickListener {
-            val newState = !sharedPreferences.getBoolean("volume_state", true)
-            sharedPreferences.edit().putBoolean("volume_state", newState).apply()
-            updateButtonState(newState)
+        when (fondoGuardado) {
+            "fondoapp" -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+            "fondochina" -> rootLayout.setBackgroundResource(R.drawable.fondochina)
+            else -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
         }
     }
 
@@ -104,7 +91,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart(){
         super.onStart()
-        val authLayout: ConstraintLayout = findViewById(R.id.authLayout)
+        val authLayout: ConstraintLayout = findViewById(R.id.rootLayout)
         authLayout.visibility = View.VISIBLE
     }
 
@@ -114,11 +101,57 @@ class LoginActivity : AppCompatActivity() {
         val provider = prefs.getString("provider", null)
 
         if (email != null && provider != null) {
-            val authLayout: ConstraintLayout = findViewById(R.id.authLayout)
+            val authLayout: ConstraintLayout = findViewById(R.id.rootLayout)
             authLayout.visibility = View.INVISIBLE
             showHome(email, ProviderType.valueOf(provider))
         }
     }
+
+
+    private fun setupVolumeButton() {
+        val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)
+
+        // Obtener SharedPreferences
+        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        var isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
+
+        // Actualizar el estado del botón
+        fun updateButtonState(isVolumeOn: Boolean) {
+            if (isVolumeOn) {
+                volumeButton.setImageResource(R.drawable.iconovolumenencendido)
+            } else {
+                volumeButton.setImageResource(R.drawable.iconovolumenapagado)
+            }
+        }
+
+        // Inicializar el estado del botón
+        updateButtonState(isVolumeOn)
+
+        // Iniciar servicio si el volumen estaba activado
+        if (isVolumeOn) {
+            val musicServiceIntent = Intent(this, MusicService::class.java)
+            startService(musicServiceIntent)
+        }
+
+        // Configurar el listener del botón
+        volumeButton.setOnClickListener {
+            isVolumeOn = !isVolumeOn // Cambiar el estado de volumen
+            sharedPreferences.edit().putBoolean("volume_state", isVolumeOn).apply()
+            updateButtonState(isVolumeOn)
+
+            // Crear un Intent para iniciar o detener el servicio
+            val musicServiceIntent = Intent(this, MusicService::class.java)
+            if (isVolumeOn) {
+                startService(musicServiceIntent) // Iniciar servicio si el volumen está activado
+            } else {
+                stopService(musicServiceIntent) // Detener servicio si el volumen está desactivado
+            }
+        }
+    }
+
+
+
+
 
     private fun showAlert(){
         val builder = AlertDialog.Builder(this)

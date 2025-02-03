@@ -1,16 +1,21 @@
 package com.pmydm.projecterato
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class GameActivity : AppCompatActivity() {
     private lateinit var gameHelper: GameHelper
@@ -31,6 +36,8 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        applyBackground()
 
         setupVolumeButton()
 
@@ -99,6 +106,21 @@ class GameActivity : AppCompatActivity() {
 
     }
 
+    private fun applyBackground() {
+        val prefs: SharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val fondoGuardado = prefs.getString("fondo", "fondoapp")
+
+        // Obtener el layout raíz de la actividad
+        val rootLayout: ConstraintLayout = findViewById(R.id.rootLayout)
+
+        when (fondoGuardado) {
+            "fondoapp" -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+            "fondochina" -> rootLayout.setBackgroundResource(R.drawable.fondochina)
+            else -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+        }
+    }
+
+
     override fun onBackPressed() {
         // Limpiar el estado del juego antes de volver
         gameHelper.clearGameState()
@@ -113,12 +135,13 @@ class GameActivity : AppCompatActivity() {
         finish() // Asegurarse de que la actividad actual se cierre
     }
 
+
     private fun setupVolumeButton() {
         val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)
 
         // Obtener SharedPreferences
         val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
-        val isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
+        var isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
 
         // Actualizar el estado del botón
         fun updateButtonState(isVolumeOn: Boolean) {
@@ -134,11 +157,21 @@ class GameActivity : AppCompatActivity() {
 
         // Configurar el listener del botón
         volumeButton.setOnClickListener {
-            val newState = !sharedPreferences.getBoolean("volume_state", true)
-            sharedPreferences.edit().putBoolean("volume_state", newState).apply()
-            updateButtonState(newState)
+            isVolumeOn = !isVolumeOn // Cambiar el estado de volumen
+            sharedPreferences.edit().putBoolean("volume_state", isVolumeOn).apply()
+            updateButtonState(isVolumeOn)
+
+            // Crear un Intent para iniciar o detener el servicio
+            val musicServiceIntent = Intent(this, MusicService::class.java)
+            if (isVolumeOn) {
+                startService(musicServiceIntent) // Iniciar servicio si el volumen está activado
+            } else {
+                stopService(musicServiceIntent) // Detener servicio si el volumen está desactivado
+            }
         }
     }
+
+
 
     private fun checkAnswer(selectedButton: ImageButton) {
         // Deshabilitar todos los botones después de hacer clic
@@ -147,34 +180,55 @@ class GameActivity : AppCompatActivity() {
         // Obtener los layouts de los botones
         val buttonLayouts = arrayOf(button1.parent as LinearLayout, button2.parent as LinearLayout, button3.parent as LinearLayout, button4.parent as LinearLayout)
 
+        // Variable para determinar si se acertó
+        var isCorrect = false
+
+        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val isVolumeOn = sharedPreferences.getBoolean("volume_state", true)
+
         // Recorrer los botones y cambiar el fondo
         for (buttonLayout in buttonLayouts) {
             val button = buttonLayout.getChildAt(0) as ImageButton // Obtener el botón dentro del LinearLayout
 
-            // Si el botón tiene la respuesta correcta
             if (button.contentDescription == correctFlag) {
-                buttonLayout.setBackgroundColor(getColor(R.color.lime_green))  // Cambiar el fondo del layout a verde
-                if(button == selectedButton) {
-                    aciertos++
-                } // Incrementar aciertos si es correcto
-            } else {
-                buttonLayout.setBackgroundColor(getColor(R.color.red))  // Cambiar el fondo del layout a rojo
+                buttonLayout.setBackgroundColor(getColor(R.color.lime_green)) // Cambiar el fondo del layout a verde
                 if (button == selectedButton) {
-                    fallos++  // Incrementar fallos si el botón seleccionado es incorrecto
+                    aciertos++
+                    isCorrect = true // Indicar que se acertó
+                }
+            } else {
+                buttonLayout.setBackgroundColor(getColor(R.color.red)) // Cambiar el fondo del layout a rojo
+                if (button == selectedButton) {
+                    fallos++ // Incrementar fallos si el botón seleccionado es incorrecto
                 }
             }
         }
 
-        // Pausar 3 segundos antes de la siguiente pregunta
-        Handler().postDelayed({
+        // Reproducir sonido si el volumen está activado
+        if (isVolumeOn) {
+            playSoundEffect(if (isCorrect) R.raw.acierto else R.raw.fallo)
+        }
+
+        // Usar una corutina para esperar sin bloquear el hilo principal
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(2000) // Pausa de 3 segundos
+
             if (gameHelper.isGameOver()) {
                 endGame()
-                return@postDelayed
+                return@launch
+            }
+
+            if(!isCorrect) {
+                val buttonState=getButtonState()
+                if (buttonState=="alfallo") {
+                    endGame()
+                    return@launch
+                }
             }
 
             // Restablecer el fondo de todos los layouts a transparente
             for (buttonLayout in buttonLayouts) {
-                buttonLayout.setBackgroundColor(getColor(android.R.color.transparent))  // Establecer fondo transparente
+                buttonLayout.setBackgroundColor(getColor(android.R.color.transparent)) // Establecer fondo transparente
             }
 
             // Restablecer los botones
@@ -186,7 +240,30 @@ class GameActivity : AppCompatActivity() {
             gameHelper.getNextQuestion()
             setupNewQuestion()
             enableButtons()
-        }, 1000)
+        }
+    }
+
+    private fun getButtonState(): String {
+        val prefs: SharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        return prefs.getString("button_state", "infinito") ?: "infinito"
+    }
+
+    private fun playSoundEffect(soundResId: Int) {
+        val soundEffectPlayer = MediaPlayer.create(this, soundResId)
+
+        // Ajustar el volumen solo para el sonido de fallo
+        if (soundResId == R.raw.fallo) {
+            soundEffectPlayer.setVolume(2.0f, 2.0f) // Volumen máximo
+        } else {
+            soundEffectPlayer.setVolume(0.8f, 0.8f) // Volumen normal para aciertos
+        }
+
+        soundEffectPlayer.apply {
+            setOnCompletionListener {
+                release() // Liberar el MediaPlayer al terminar el sonido
+            }
+            start()
+        }
     }
 
     private fun setupNewQuestion() {

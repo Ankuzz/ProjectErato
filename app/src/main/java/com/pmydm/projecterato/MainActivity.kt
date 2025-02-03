@@ -3,6 +3,8 @@ package com.pmydm.projecterato
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        applyBackground()
+
         setupVolumeButton()
 
         botones()
@@ -28,6 +32,21 @@ class MainActivity : AppCompatActivity() {
         session()
 
     }
+
+    private fun applyBackground() {
+        val prefs: SharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val fondoGuardado = prefs.getString("fondo", "fondoapp")
+
+        // Obtener el layout raíz de la actividad
+        val rootLayout: ConstraintLayout = findViewById(R.id.rootLayout)
+
+        when (fondoGuardado) {
+            "fondoapp" -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+            "fondochina" -> rootLayout.setBackgroundResource(R.drawable.fondochina)
+            else -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+        }
+    }
+
 
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
@@ -46,12 +65,14 @@ class MainActivity : AppCompatActivity() {
         builder.create().show()
     }
 
+    private lateinit var mediaPlayer: MediaPlayer
+
     private fun setupVolumeButton() {
         val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)
 
         // Obtener SharedPreferences
         val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
-        val isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
+        var isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
 
         // Actualizar el estado del botón
         fun updateButtonState(isVolumeOn: Boolean) {
@@ -67,11 +88,22 @@ class MainActivity : AppCompatActivity() {
 
         // Configurar el listener del botón
         volumeButton.setOnClickListener {
-            val newState = !sharedPreferences.getBoolean("volume_state", true)
-            sharedPreferences.edit().putBoolean("volume_state", newState).apply()
-            updateButtonState(newState)
+            isVolumeOn = !isVolumeOn // Cambiar el estado de volumen
+            sharedPreferences.edit().putBoolean("volume_state", isVolumeOn).apply()
+            updateButtonState(isVolumeOn)
+
+            // Crear un Intent para iniciar o detener el servicio
+            val musicServiceIntent = Intent(this, MusicService::class.java)
+            if (isVolumeOn) {
+                startService(musicServiceIntent) // Iniciar servicio si el volumen está activado
+            } else {
+                stopService(musicServiceIntent) // Detener servicio si el volumen está desactivado
+            }
         }
     }
+
+
+
 
     private fun session(){
         val prefs = getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE)

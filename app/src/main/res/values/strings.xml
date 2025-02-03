@@ -13,7 +13,7 @@
     <string name="registrarse">Registrarse</string>
     <string name="ajustes">Ajustes</string>
     <string name="idioma">Idioma</string>
-    <string name="descargar_datos">Descargar datos</string>
+    <string name="descargar_datos">Historial</string>
     <string name="cambiar_fondo">Cambiar fondo</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="europa">Europa</string>
@@ -37,6 +37,10 @@
     <string name="botonBandera" translatable="false">boton con bandera</string>
     <string name="correcto">¡Correcto!</string>
     <string name="incorrecto">¡Incorrecto!</string>
-    <string name="botonCantidad">botonCantidad\n</string>
+    <string name="botonCantidad" translatable="false">botonCantidad\n</string>
     <string name="mixto">Mixto</string>
+    <string name="capa_blanca" translatable="false">Capa blanca</string>
+    <string name="fondo_china" translatable="false">Fondo China</string>
+    <string name="marcomadera" translatable="false">marcoMadera</string>
+    <string name="fondo_app" translatable="false">Fondo App</string>
 </resources>

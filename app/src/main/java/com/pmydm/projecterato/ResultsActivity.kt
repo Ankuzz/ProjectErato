@@ -1,16 +1,20 @@
 package com.pmydm.projecterato
 
 import android.content.Intent
+import android.content.SharedPreferences
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 
 class ResultsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_results)
+        applyBackground()
         setupVolumeButton()
 
         // Obtener referencias a los TextView
@@ -39,7 +43,7 @@ class ResultsActivity : AppCompatActivity() {
 
         // Obtener SharedPreferences
         val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
-        val isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
+        var isVolumeOn = sharedPreferences.getBoolean("volume_state", true) // Por defecto, true
 
         // Actualizar el estado del botón
         fun updateButtonState(isVolumeOn: Boolean) {
@@ -55,11 +59,37 @@ class ResultsActivity : AppCompatActivity() {
 
         // Configurar el listener del botón
         volumeButton.setOnClickListener {
-            val newState = !sharedPreferences.getBoolean("volume_state", true)
-            sharedPreferences.edit().putBoolean("volume_state", newState).apply()
-            updateButtonState(newState)
+            isVolumeOn = !isVolumeOn // Cambiar el estado de volumen
+            sharedPreferences.edit().putBoolean("volume_state", isVolumeOn).apply()
+            updateButtonState(isVolumeOn)
+
+            // Crear un Intent para iniciar o detener el servicio
+            val musicServiceIntent = Intent(this, MusicService::class.java)
+            if (isVolumeOn) {
+                startService(musicServiceIntent) // Iniciar servicio si el volumen está activado
+            } else {
+                stopService(musicServiceIntent) // Detener servicio si el volumen está desactivado
+            }
         }
     }
+
+
+
+
+    private fun applyBackground() {
+        val prefs: SharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val fondoGuardado = prefs.getString("fondo", "fondoapp")
+
+        // Obtener el layout raíz de la actividad
+        val rootLayout: ConstraintLayout = findViewById(R.id.rootLayout)
+
+        when (fondoGuardado) {
+            "fondoapp" -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+            "fondochina" -> rootLayout.setBackgroundResource(R.drawable.fondochina)
+            else -> rootLayout.setBackgroundResource(R.drawable.fondoapp)
+        }
+    }
+
 
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)

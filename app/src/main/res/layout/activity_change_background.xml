@@ -1,0 +1,123 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:scaleType="centerCrop">
+
+    <!-- Botones Volver y Volumen -->
+
+    <ImageButton
+        android:id="@+id/imageButtonVolver"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:background="@drawable/button_square_background"
+        android:contentDescription="@string/botonvolver"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/flecha"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/imageButtonVolumen"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:background="@drawable/button_square_background"
+        android:contentDescription="@string/botonvolumen"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconovolumenencendido" />
+
+    <ScrollView
+        android:id="@+id/scrollViewImages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Fondo App -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="490dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/marcomadera"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/marcomadera" />
+
+                <ImageView
+                    android:id="@+id/imageViewFondoApp"
+                    android:layout_width="230dp"
+                    android:layout_height="470dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/fondo_app"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fondoapp" />
+
+                <!-- Capa blanca semi-transparente -->
+                <ImageView
+                    android:id="@+id/imageViewFondoBlanco"
+                    android:layout_width="230dp"
+                    android:layout_height="470dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/capa_blanca"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fondo_blanco"
+                    android:alpha="0.6" /> <!-- Controla la transparencia aquí -->
+            </FrameLayout>
+
+            <!-- Fondo China -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="490dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/marcomadera"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/marcomadera" />
+
+                <ImageView
+                    android:id="@+id/imageViewFondoChina"
+                    android:layout_width="230dp"
+                    android:layout_height="470dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/fondo_china"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fondochina" />
+
+                <!-- Capa blanca semi-transparente -->
+                <ImageView
+                    android:id="@+id/imageViewFondoBlancoChina"
+                    android:layout_width="230dp"
+                    android:layout_height="470dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/capa_blanca"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fondo_blanco"
+                    android:alpha="0.6" /> <!-- Controla la transparencia aquí -->
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
