@@ -25,7 +25,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var button3: ImageButton
     private lateinit var button4: ImageButton
     private lateinit var buttonText: TextView
-
+    private val questionsList = mutableListOf<Question>()
     // Contadores de aciertos y fallos
     private var aciertos = 0
     private var fallos = 0
@@ -181,25 +181,30 @@ class GameActivity : AppCompatActivity() {
         val buttonLayouts = arrayOf(button1.parent as LinearLayout, button2.parent as LinearLayout, button3.parent as LinearLayout, button4.parent as LinearLayout)
 
         // Variable para determinar si se acertó
-        var isCorrect = false
+        val selectedAnswer = selectedButton.contentDescription.toString()
 
+        // Verificar si la respuesta seleccionada es correcta
+        val isCorrect = selectedAnswer == correctFlag
+
+        // Guardar la pregunta, la respuesta del usuario y si es correcta
+        saveQuestion(buttonText.text.toString(), selectedAnswer, isCorrect)
+
+        // Lógica para cambiar el fondo de los botones
         val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
         val isVolumeOn = sharedPreferences.getBoolean("volume_state", true)
 
-        // Recorrer los botones y cambiar el fondo
         for (buttonLayout in buttonLayouts) {
-            val button = buttonLayout.getChildAt(0) as ImageButton // Obtener el botón dentro del LinearLayout
+            val button = buttonLayout.getChildAt(0) as ImageButton
 
             if (button.contentDescription == correctFlag) {
-                buttonLayout.setBackgroundColor(getColor(R.color.lime_green)) // Cambiar el fondo del layout a verde
+                buttonLayout.setBackgroundColor(getColor(R.color.lime_green))
                 if (button == selectedButton) {
                     aciertos++
-                    isCorrect = true // Indicar que se acertó
                 }
             } else {
-                buttonLayout.setBackgroundColor(getColor(R.color.red)) // Cambiar el fondo del layout a rojo
+                buttonLayout.setBackgroundColor(getColor(R.color.red))
                 if (button == selectedButton) {
-                    fallos++ // Incrementar fallos si el botón seleccionado es incorrecto
+                    fallos++
                 }
             }
         }
@@ -209,29 +214,21 @@ class GameActivity : AppCompatActivity() {
             playSoundEffect(if (isCorrect) R.raw.acierto else R.raw.fallo)
         }
 
-        // Usar una corutina para esperar sin bloquear el hilo principal
+        // Continuar con la lógica del juego
         CoroutineScope(Dispatchers.Main).launch {
-            delay(2000) // Pausa de 3 segundos
+            delay(2000)
 
-            if (gameHelper.isGameOver()) {
+            if (gameHelper.isGameOver(fallos)) {
                 endGame()
                 return@launch
             }
 
-            if(!isCorrect) {
-                val buttonState=getButtonState()
-                if (buttonState=="alfallo") {
-                    endGame()
-                    return@launch
-                }
-            }
-
-            // Restablecer el fondo de todos los layouts a transparente
+            // Restablecer los fondos de los botones
             for (buttonLayout in buttonLayouts) {
-                buttonLayout.setBackgroundColor(getColor(android.R.color.transparent)) // Establecer fondo transparente
+                buttonLayout.setBackgroundColor(getColor(android.R.color.transparent))
             }
 
-            // Restablecer los botones
+            // Restablecer las imágenes de los botones
             button1.setImageResource(0)
             button2.setImageResource(0)
             button3.setImageResource(0)
@@ -242,6 +239,20 @@ class GameActivity : AppCompatActivity() {
             enableButtons()
         }
     }
+
+
+    private fun saveQuestion(questionText: String, userAnswer: String, isCorrect: Boolean) {
+        // Crear un objeto de tipo Question con los valores actuales
+        val question = Question(
+            question = questionText,
+            userAnswer = userAnswer,
+            correct = isCorrect
+        )
+
+        // Añadir la pregunta a la lista
+        questionsList.add(question)
+    }
+
 
     private fun getButtonState(): String {
         val prefs: SharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
@@ -312,12 +323,27 @@ class GameActivity : AppCompatActivity() {
 
     // Método para finalizar el juego y pasar los resultados a la ResultsActivity
     private fun endGame() {
+        val opcion = intent.getStringExtra("Tipo")
+        val region = intent.getStringExtra("Region")
+
+        // Convierte la lista de preguntas a una lista de strings
+        val questionsData = questionsList.map {
+            "${it.question},${it.userAnswer},${it.correct}"
+        }
+
+        // Crea un nuevo intent y pasa los datos
         val intent = Intent(this, ResultsActivity::class.java).apply {
             putExtra("aciertos", aciertos)
             putExtra("fallos", fallos)
+            putExtra("tipo", opcion)
+            putExtra("region", region)
+            putStringArrayListExtra("questions", ArrayList(questionsData)) // Envía la lista de preguntas
         }
+
+        // Lanza la actividad de resultados
         startActivity(intent)
         overridePendingTransition(0, 0)
         finish() // Termina la actividad actual si es necesario
     }
+
 }

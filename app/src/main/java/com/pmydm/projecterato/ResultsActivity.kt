@@ -1,14 +1,19 @@
 package com.pmydm.projecterato
 
+import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.MediaPlayer
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.firebase.auth.FirebaseAuth
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ResultsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,10 +29,39 @@ class ResultsActivity : AppCompatActivity() {
         // Obtener los datos pasados por Intent
         val aciertos = intent.getIntExtra("aciertos", 0)
         val fallos = intent.getIntExtra("fallos", 0)
+        val region = intent.getStringExtra("region") ?: ""
+        val mode = intent.getStringExtra("tipo") ?: ""
 
         // Establecer los valores en los TextView
         numeroAciertos.text = aciertos.toString()
         numeroFallos.text = fallos.toString()
+
+        // Obtener las preguntas enviadas desde la GameActivity
+        val questionsData = intent.getStringArrayListExtra("questions")
+
+        // Si las preguntas no son nulas, procesarlas
+        if (questionsData != null) {
+            val questionsList = questionsData.map {
+                val parts = it.split(",")
+                val questionText = parts[0]
+                val userAnswer = parts[1]
+                val correct = parts[2].toBoolean()
+                Question(questionText, userAnswer, correct)
+            }
+
+            // Obtener el style desde SharedPreferences
+            val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+            val style = sharedPreferences.getString("button_state", "default_style") ?: "default_style"
+
+            // Obtener la fecha actual
+            val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
+
+            // Obtener el UID desde Firebase (asumiendo que estás usando FirebaseAuth)
+            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: "default_uid"
+
+            // Guardar los resultados en la base de datos
+            saveResultsToDatabase(questionsList, aciertos, fallos, style, currentDate, region, mode, uid)
+        }
 
         // Botón para volver al menú principal
         val buttonMenu: Button = findViewById(R.id.buttonMenu)
@@ -37,6 +71,62 @@ class ResultsActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
     }
+
+    private fun saveResultsToDatabase(
+        questions: List<Question>,
+        aciertos: Int,
+        fallos: Int,
+        style: String,
+        date: String,
+        region: String,
+        mode: String,
+        uid: String
+    ) {
+        val dbHelper = QuizDatabaseHelper(this)
+        val db = dbHelper.writableDatabase
+
+        // Insertar los datos generales del juego en la tabla Games
+        val gameValues = ContentValues().apply {
+            put("user_id", uid)
+            put("date", date)
+            put("region", region)
+            put("style", style)
+            put("mode", mode)
+        }
+
+        val gameId = db.insert("Games", null, gameValues) // Insertamos los datos generales y obtenemos el ID
+
+        // Insertar cada pregunta relacionada con el resultado
+        questions.forEach { question ->
+            val questionValues = ContentValues().apply {
+                put("game_id", gameId) // Relacionamos la pregunta con el resultado
+                put("question", question.question)
+                put("user_answer", question.userAnswer)
+                put("correct", if (question.correct) 1 else 0) // 1 para verdadero, 0 para falso
+            }
+            db.insert("Questions", null, questionValues) // Insertamos la pregunta en la base de datos
+        }
+
+        // Limitar el número de partidas a las últimas 5
+        limitGamesToFive(db)
+
+        db.close() // Cerramos la base de datos
+    }
+
+    private fun limitGamesToFive(db: SQLiteDatabase) {
+        // Verificar cuántas partidas hay en la tabla Games
+        val cursor = db.rawQuery("SELECT COUNT(*) FROM Games", null)
+        cursor.moveToFirst()
+        val gameCount = cursor.getInt(0)
+        cursor.close()
+
+        // Si hay más de 5 partidas, eliminamos la más antigua
+        if (gameCount > 5) {
+            // Eliminar la partida con el id más bajo (la más antigua)
+            db.execSQL("DELETE FROM Games WHERE id = (SELECT MIN(id) FROM Games)")
+        }
+    }
+
 
     private fun setupVolumeButton() {
         val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)
@@ -73,9 +163,6 @@ class ResultsActivity : AppCompatActivity() {
         }
     }
 
-
-
-
     private fun applyBackground() {
         val prefs: SharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
         val fondoGuardado = prefs.getString("fondo", "fondoapp")
@@ -90,7 +177,7 @@ class ResultsActivity : AppCompatActivity() {
         }
     }
 
-
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)

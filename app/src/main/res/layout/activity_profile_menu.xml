@@ -42,7 +42,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonDescargarDatos" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonHistorial" />
 
     <Button
         android:id="@+id/buttonIdioma"
@@ -81,7 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonCerrarSesion" />
 
     <Button
-        android:id="@+id/buttonDescargarDatos"
+        android:id="@+id/buttonHistorial"
         android:layout_width="217dp"
         android:layout_height="87dp"
         android:layout_marginStart="96dp"

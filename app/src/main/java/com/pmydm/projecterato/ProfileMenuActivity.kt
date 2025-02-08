@@ -127,5 +127,12 @@ class ProfileMenuActivity : AppCompatActivity() {
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
+
+        val buttonHistorial : Button = findViewById(R.id.buttonHistorial)
+        buttonHistorial.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
     }
 }

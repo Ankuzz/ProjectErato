@@ -40,12 +40,13 @@ class GameHelper(val gameType: String, val region: String, val context: Context)
         return sharedPreferences.getString("button_state", "infinito") ?: "infinito"
     }
 
-    fun isGameOver(): Boolean {
+    fun isGameOver(fallos: Int): Boolean {
         val buttonState = getButtonState()
 
         return when (buttonState) {
             "infinito" -> countriesList.isEmpty()  // Juego termina cuando no hay más países
             "10" -> countriesShownCount >= 10  // Juego termina después de 10 países mostrados
+            "alfallo" -> fallos > 0  // Juego termina si se falla
             else -> countriesList.isEmpty()
         }
     }
