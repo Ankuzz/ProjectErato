@@ -8,24 +8,26 @@ import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.InputType
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import java.io.ByteArrayOutputStream
 
 class ProfileActivity : AppCompatActivity() {
@@ -43,10 +45,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var addBioButton: Button
     private lateinit var addRegionButton: Button
 
-    private val STORAGE_PERMISSION_CODE = 101
-    private val CAMERA_PERMISSION_CODE = 102
-    private val STORAGE_PERMISSION = Manifest.permission.READ_EXTERNAL_STORAGE
-    private val CAMERA_PERMISSION = Manifest.permission.CAMERA
+    private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,21 +64,12 @@ class ProfileActivity : AppCompatActivity() {
         addBioButton = findViewById(R.id.addBioButton)
         addRegionButton = findViewById(R.id.addRegionButton)
 
-        // Verificar permisos antes de permitir al usuario seleccionar imagen
-        if (checkPermission(STORAGE_PERMISSION)) {
-            profileImage.setOnClickListener {
+        profileImage.setOnClickListener {
+            if (allPermissionsGranted()) {
                 showPictureDialog()
+            } else {
+                askForPermissions(REQUIRED_PERMISSIONS)
             }
-        } else {
-            requestPermission(STORAGE_PERMISSION, STORAGE_PERMISSION_CODE)
-        }
-
-        if (checkPermission(CAMERA_PERMISSION)) {
-            profileImage.setOnClickListener {
-                showPictureDialog()
-            }
-        } else {
-            requestPermission(CAMERA_PERMISSION, CAMERA_PERMISSION_CODE)
         }
 
         val imageButtonVolver: ImageButton = findViewById(R.id.imageButtonVolver)
@@ -120,48 +110,120 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkPermission(permission: String): Boolean {
-        return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+    private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
+        ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
+    }
+    private fun executeDialogForNegativePermission(isRationale: Boolean, callback: () -> Unit) {
+        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val languageCode = sharedPreferences.getString("language_code", "es")
+
+        Log.d("Permissions", if (isRationale) "Mostrando diálogo de racionalización." else "Redirigiendo a configuración de la aplicación.")
+        MaterialAlertDialogBuilder(this)
+            .setTitle(
+                when (languageCode) {
+                    "es" -> "ACEPTE LOS PERMISOS"
+                    "en" -> "ACCEPT THE PERMISSIONS"
+                    "de" -> "AKZEPTIEREN SIE DIE BERECHTIGUNGEN"
+                    "pl" -> "AKCEPTUJ UPRAWNIENIA"
+                    else -> "ACEPTE LOS PERMISOS"
+                }
+            )
+            .setMessage(
+                when (languageCode) {
+                    "es" -> if (isRationale) "Se necesita permiso para acceder a la cámara." else "Por favor, habilite el permiso desde la configuración de la aplicación."
+                    "en" -> if (isRationale) "Permission is needed to access the camera." else "Please enable the permission from the application settings."
+                    "de" -> if (isRationale) "Berechtigung wird benötigt, um auf die Kamera zuzugreifen." else "Bitte aktivieren Sie die Berechtigung in den Anwendungseinstellungen."
+                    "pl" -> if (isRationale) "Wymagana jest zgoda na dostęp do kamery." else "Proszę włączyć uprawnienie w ustawieniach aplikacji."
+                    else -> if (isRationale) "Se necesita permiso para acceder a la cámara." else "Por favor, habilite el permiso desde la configuración de la aplicación."
+                }
+            )
+            .setPositiveButton(
+                when (languageCode) {
+                    "es" -> "Aceptar"
+                    "en" -> "Accept"
+                    "de" -> "Akzeptieren"
+                    "pl" -> "Akceptuj"
+                    else -> "Aceptar"
+                }
+            ) { dialog, _ ->
+                callback.invoke()
+                if (!isRationale) {
+                    val intent = Intent(
+                        android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                        Uri.fromParts("package", packageName, null),
+                    )
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    startActivity(intent)
+                }
+                dialog.dismiss()
+            }
+            .show()
     }
 
-    private fun requestPermission(permission: String, requestCode: Int) {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, permission)) {
-            val alertDialog = AlertDialog.Builder(this)
-                .setTitle("Permiso requerido")
-                .setMessage("Se necesita este permiso para acceder a la cámara o galería.")
-                .setPositiveButton("OK") { _, _ ->
-                    ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+
+    private fun askForPermissions(REQUIRED_PERMISSIONS: Array<String>) {
+        val permissionToAsk = mutableListOf<String>()
+
+        REQUIRED_PERMISSIONS.forEach { permission ->
+            when {
+                ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED -> {
+                    Log.d("Permissions", "Permiso $permission ya concedido.")
                 }
-                .setNegativeButton("Cancelar") { _, _ -> }
-                .show()
+                shouldShowRequestPermissionRationale(permission) -> {
+                    Log.d("Permissions", "Permiso $permission denegado, pero se puede volver a pedir.")
+                    permissionToAsk.add(permission)
+                }
+                else -> {
+                    Log.d("Permissions", "Permiso $permission no ha sido concedido ni denegado previamente.")
+                    permissionToAsk.add(permission)
+                }
+            }
+        }
+
+        if (permissionToAsk.isNotEmpty()) {
+            Log.d("Permissions", "Solicitando permisos: ${permissionToAsk.joinToString()}")
+            requestPermissionLauncher.launch(permissionToAsk.toTypedArray())
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(permission), requestCode)
+            Log.d("Permissions", "No hay permisos para pedir, mostrando diálogo para ir a configuración.")
+            executeDialogForNegativePermission(false) {
+                // Aquí puedes agregar lógica adicional si es necesario
+            }
         }
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            STORAGE_PERMISSION_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    profileImage.setOnClickListener {
-                        showPictureDialog()
-                    }
-                } else {
-                    Toast.makeText(this, "Permiso para acceder al almacenamiento denegado", Toast.LENGTH_SHORT).show()
-                }
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions(),
+        ) { isGranted: Map<String, Boolean>? ->
+            if (isGranted == null) {
+                Log.e("Permissions", "Resultado de permisos es null.")
+                return@registerForActivityResult
             }
-            CAMERA_PERMISSION_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    profileImage.setOnClickListener {
-                        showPictureDialog()
+
+            val permissionToAsk = mutableListOf<String>()
+
+            Log.d("Permissions", "Resultado de permisos: $isGranted")
+
+            if (isGranted.values.contains(false)) {
+                REQUIRED_PERMISSIONS.forEach { permission ->
+                    val isPermissionGranted = isGranted[permission]
+                    if (isPermissionGranted == false && shouldShowRequestPermissionRationale(permission)) {
+                        permissionToAsk.add(permission)
+                    }
+                }
+                if (permissionToAsk.isNotEmpty()) {
+                    executeDialogForNegativePermission(true) {
+                        askForPermissions(permissionToAsk.toTypedArray())
                     }
                 } else {
-                    Toast.makeText(this, "Permiso para acceder a la cámara denegado", Toast.LENGTH_SHORT).show()
+                    executeDialogForNegativePermission(false) {
+                        // Aquí puedes agregar lógica adicional si es necesario
+                    }
                 }
+            } else {
+                showPictureDialog()
             }
         }
-    }
 
     private fun loadProfileData(userId: String) {
         val db = dbHelper.readableDatabase
@@ -217,7 +279,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun showEditDialog(field: String, onTextEntered: (String) -> Unit) {
         val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
-        val languageCode = sharedPreferences.getString("language_code", "es") // por defecto en español
+        val languageCode = sharedPreferences.getString("language_code", "es")
 
         val builder = AlertDialog.Builder(this)
 
@@ -226,7 +288,7 @@ class ProfileActivity : AppCompatActivity() {
             "en" -> builder.setTitle("Edit $field")
             "de" -> builder.setTitle("Bearbeiten $field")
             "pl" -> builder.setTitle("Edytuj $field")
-            else -> builder.setTitle("Editar $field") // Valor por defecto
+            else -> builder.setTitle("Editar $field")
         }
 
         val input = EditText(this)
@@ -267,7 +329,6 @@ class ProfileActivity : AppCompatActivity() {
         builder.show()
     }
 
-
     private fun setupVolumeButton() {
         val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)
 
@@ -300,7 +361,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun showPictureDialog() {
         val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
-        val languageCode = sharedPreferences.getString("language_code", "es") // por defecto en español
+        val languageCode = sharedPreferences.getString("language_code", "es")
 
         val pictureDialog = AlertDialog.Builder(this)
 
@@ -346,7 +407,6 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
             else -> {
-                // En caso de que el language_code no esté en la lista, usar el valor por defecto (español)
                 pictureDialog.setTitle("Seleccionar acción")
                 val pictureDialogItems = arrayOf("Seleccionar foto desde la galería", "Capturar foto desde la cámara")
                 pictureDialog.setItems(pictureDialogItems) { dialog, which ->
@@ -359,7 +419,6 @@ class ProfileActivity : AppCompatActivity() {
         }
         pictureDialog.show()
     }
-
 
     private fun openGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
