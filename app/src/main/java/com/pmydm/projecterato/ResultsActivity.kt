@@ -56,11 +56,11 @@ class ResultsActivity : AppCompatActivity() {
             // Obtener la fecha actual
             val currentDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
 
-            // Obtener el UID desde Firebase (asumiendo que estás usando FirebaseAuth)
-            val uid = FirebaseAuth.getInstance().currentUser?.uid ?: "default_uid"
+            // Obtener el nombre de usuario
+            val username = getUsername()
 
             // Guardar los resultados en la base de datos
-            saveResultsToDatabase(questionsList, aciertos, fallos, style, currentDate, region, mode, uid)
+            saveResultsToDatabase(questionsList, aciertos, fallos, style, currentDate, region, mode, username)
         }
 
         // Botón para volver al menú principal
@@ -72,6 +72,20 @@ class ResultsActivity : AppCompatActivity() {
         }
     }
 
+    private fun getUsername(): String {
+        val prefs = getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE)
+        val email = prefs.getString("email", null)
+        val provider = prefs.getString("provider", null)
+
+        return if (provider == ProviderType.GOOGLE.name) {
+            // Obtener el nombre de usuario de Google usando FirebaseAuth
+            val user = FirebaseAuth.getInstance().currentUser
+            user?.displayName ?: "Nombre de Usuario de Google"
+        } else {
+            email?.split("@")?.get(0) ?: "Usuario Desconocido"
+        }
+    }
+
     private fun saveResultsToDatabase(
         questions: List<Question>,
         aciertos: Int,
@@ -80,14 +94,14 @@ class ResultsActivity : AppCompatActivity() {
         date: String,
         region: String,
         mode: String,
-        uid: String
+        username: String
     ) {
         val dbHelper = QuizDatabaseHelper(this)
         val db = dbHelper.writableDatabase
 
         // Insertar los datos generales del juego en la tabla Games
         val gameValues = ContentValues().apply {
-            put("user_id", uid)
+            put("username", username)
             put("date", date)
             put("region", region)
             put("style", style)
@@ -107,26 +121,25 @@ class ResultsActivity : AppCompatActivity() {
             db.insert("Questions", null, questionValues) // Insertamos la pregunta en la base de datos
         }
 
-        // Limitar el número de partidas a las últimas 5
-        limitGamesToFive(db)
+        // Limitar el número de partidas a las últimas 5 de cada usuario
+        limitGamesToFivePerUser(db, username)
 
         db.close() // Cerramos la base de datos
     }
 
-    private fun limitGamesToFive(db: SQLiteDatabase) {
-        // Verificar cuántas partidas hay en la tabla Games
-        val cursor = db.rawQuery("SELECT COUNT(*) FROM Games", null)
+    private fun limitGamesToFivePerUser(db: SQLiteDatabase, username: String) {
+        // Verificar cuántas partidas hay en la tabla Games para el usuario específico
+        val cursor = db.rawQuery("SELECT COUNT(*) FROM Games WHERE username = ?", arrayOf(username))
         cursor.moveToFirst()
         val gameCount = cursor.getInt(0)
         cursor.close()
 
         // Si hay más de 5 partidas, eliminamos la más antigua
         if (gameCount > 5) {
-            // Eliminar la partida con el id más bajo (la más antigua)
-            db.execSQL("DELETE FROM Games WHERE id = (SELECT MIN(id) FROM Games)")
+            // Eliminar la partida con el id más bajo (la más antigua) para este usuario
+            db.execSQL("DELETE FROM Games WHERE id = (SELECT MIN(id) FROM Games WHERE username = ?)", arrayOf(username))
         }
     }
-
 
     private fun setupVolumeButton() {
         val volumeButton = findViewById<ImageButton>(R.id.imageButtonVolumen)

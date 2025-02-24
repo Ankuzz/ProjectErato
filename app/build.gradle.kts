@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.pmydm.projecterato"
-        minSdk = 24
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -56,4 +56,7 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.google.firebase.auth)
     implementation(libs.play.services.auth)
+    implementation(libs.firebase.storage)
+    implementation (libs.glide)
+
 }

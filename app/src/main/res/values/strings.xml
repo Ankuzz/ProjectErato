@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">ProjectErato</string>
+    <string name="app_name" translatable="false">Flaggen</string>
     <string name="boton_con_imagen" translatable="false">Botón con imagen</string>
     <string name="capitales">Capitales</string>
     <string name="paises">Países</string>
@@ -11,7 +11,7 @@
     <string name="fondo_blanco" translatable="false">fondo_blanco</string>
     <string name="contrasenha">Contraseña</string>
     <string name="registrarse">Registrarse</string>
-    <string name="ajustes">Ajustes</string>
+    <string name="creditos">Créditos</string>
     <string name="idioma">Idioma</string>
     <string name="descargar_datos">Historial</string>
     <string name="cambiar_fondo">Cambiar fondo</string>
@@ -43,4 +43,14 @@
     <string name="fondo_china" translatable="false">Fondo China</string>
     <string name="marcomadera" translatable="false">marcoMadera</string>
     <string name="fondo_app" translatable="false">Fondo App</string>
+    <string name="arte">Arte:</string>
+    <string name="botones">"Botones: "</string>
+    <string name="itch_io" translatable="false">Itch.io</string>
+    <string name="dibujante">Dibujante</string>
+    <string name="perfil">Perfil</string>
+    <string name="cambiar_nombre">Cambiar nombre</string>
+    <string name="anadir_bio">Añadir biografía</string>
+    <string name="anadir_region">Añadir región</string>
+    <string name="regi_n">Región</string>
+    <string name="biograf_a">Biografía</string>
 </resources>

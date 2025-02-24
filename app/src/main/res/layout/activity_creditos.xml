@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoapp"
+    android:scaleType="centerCrop"
+    tools:context=".ActivityCreditos">
+
+    <ImageButton
+        android:id="@+id/imageButtonVolver"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_square_background"
+        android:contentDescription="@string/botonvolver"
+        android:paddingBottom="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/flecha"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/imageButtonVolumen"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_square_background"
+        android:contentDescription="@string/botonvolumen"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconovolumenencendido" />
+
+    <TextView
+        android:id="@+id/textViewArte"
+        android:layout_width="328dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/texto"
+        android:fontFamily="@font/bungee_regular"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:scaleType="fitXY"
+        android:text="@string/arte"
+        android:textColor="#D7B879"
+        android:textSize="45sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonVolver" />
+
+    <TextView
+        android:id="@+id/textViewBotones"
+        android:layout_width="328dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/texto"
+        android:fontFamily="@font/bungee_regular"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:scaleType="fitXY"
+        android:text="@string/botones"
+        android:textColor="#D7B879"
+        android:textSize="45sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDibujante" />
+
+    <Button
+        android:id="@+id/buttonDibujante"
+        android:layout_width="183dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/bungee_regular"
+        android:paddingBottom="9dp"
+        android:text="@string/dibujante"
+        android:textColor="#6F5D47"
+        android:textSize="23sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewArte" />
+
+    <Button
+        android:id="@+id/buttonItchIo"
+        android:layout_width="183dp"
+        android:layout_height="107dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/bungee_regular"
+        android:paddingBottom="9dp"
+        android:text="@string/itch_io"
+        android:textColor="#6F5D47"
+        android:textSize="23sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBotones" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     <string name="iniciar_sesion">Log in</string>
     <string name="contrasenha">Password</string>
     <string name="registrarse">Register</string>
-    <string name="ajustes">Settings</string>
+    <string name="creditos">Credits</string>
     <string name="idioma">Language</string>
     <string name="descargar_datos">History</string>
     <string name="cambiar_fondo">Change background</string>
@@ -24,4 +24,13 @@
     <string name="correcto">Correct!</string>
     <string name="incorrecto">Wrong!</string>
     <string name="mixto">Mixed</string>
+    <string name="arte">"Art: "</string>
+    <string name="botones">"Buttons: "</string>
+    <string name="dibujante">Cartoonist</string>
+    <string name="perfil">Profile</string>
+    <string name="cambiar_nombre">Change username</string>
+    <string name="anadir_bio">Add Biography</string>
+    <string name="anadir_region">Add region</string>
+    <string name="regi_n">Region</string>
+    <string name="biograf_a">Biography</string>
 </resources>

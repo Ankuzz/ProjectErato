@@ -5,7 +5,7 @@
     <string name="iniciar_sesion">Rejestrowanie</string>
     <string name="contrasenha">Hasło</string>
     <string name="registrarse">Rejestrować</string>
-    <string name="ajustes">Ustawienia</string>
+    <string name="creditos">Kredyty</string>
     <string name="idioma">Język</string>
     <string name="descargar_datos">Historia</string>
     <string name="cambiar_fondo">Zmień tło</string>
@@ -24,4 +24,13 @@
     <string name="correcto">Poprawny!</string>
     <string name="incorrecto">Błędny!</string>
     <string name="mixto">Mieszany</string>
+    <string name="arte">Sztuka:</string>
+    <string name="botones">"Przyciski: "</string>
+    <string name="dibujante">Rysownik</string>
+    <string name="perfil">Profil</string>
+    <string name="cambiar_nombre">Zmień nazwę</string>
+    <string name="anadir_bio">Dodaj biografię</string>
+    <string name="anadir_region">Dodaj region</string>
+    <string name="regi_n">Region</string>
+    <string name="biograf_a">Biografia</string>
 </resources>

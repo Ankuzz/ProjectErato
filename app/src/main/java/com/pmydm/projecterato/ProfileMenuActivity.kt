@@ -1,9 +1,7 @@
 package com.pmydm.projecterato
 
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -25,10 +23,17 @@ class ProfileMenuActivity : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
-        val buttonAjustes: Button = findViewById(R.id.buttonAjustes)
+        val buttonCreditos: Button = findViewById(R.id.buttonCreditos)
 
-        buttonAjustes.setOnClickListener {
-            val intent = Intent(this, SettingActivity::class.java)
+        buttonCreditos.setOnClickListener {
+            val intent = Intent(this, ActivityCreditos::class.java)
+            startActivity(intent)
+            overridePendingTransition(0, 0)
+        }
+
+        val buttonPerfil: Button = findViewById(R.id.buttonPerfil)
+        buttonPerfil.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             overridePendingTransition(0, 0)
         }
@@ -94,6 +99,7 @@ class ProfileMenuActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun setup(email: String, provider: String){
         title = "Inicio"
 

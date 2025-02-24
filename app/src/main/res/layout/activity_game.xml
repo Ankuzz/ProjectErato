@@ -68,32 +68,25 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
+        android:id="@+id/linearLayout2"
         android:layout_width="198dp"
         android:layout_height="182dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="33dp"
+        android:layout_marginTop="400dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/button1"
-            android:layout_width="182dp"
-            android:layout_height="156dp"
+            android:id="@+id/button4"
+            android:layout_width="184dp"
+            android:layout_height="155dp"
             android:layout_gravity="center"
             android:background="@null"
             android:contentDescription="@string/botonBandera"
             android:scaleType="fitXY"
-            android:src="@drawable/button_background"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.03"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.936" />
+            android:src="@drawable/button_background" />
     </LinearLayout>
 
     <LinearLayout
@@ -126,37 +119,44 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout4"
         android:layout_width="198dp"
         android:layout_height="182dp"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginBottom="33dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoPais">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <ImageButton
-            android:id="@+id/button4"
-            android:layout_width="184dp"
-            android:layout_height="155dp"
+            android:id="@+id/button1"
+            android:layout_width="182dp"
+            android:layout_height="156dp"
             android:layout_gravity="center"
             android:background="@null"
             android:contentDescription="@string/botonBandera"
             android:scaleType="fitXY"
-            android:src="@drawable/button_background" />
+            android:src="@drawable/button_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.936" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="198dp"
         android:layout_height="182dp"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="400dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textoPais">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
             android:id="@+id/button3"

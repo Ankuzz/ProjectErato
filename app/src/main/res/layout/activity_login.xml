@@ -121,26 +121,13 @@
         android:layout_width="70dp"
         android:layout_height="59dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="68dp"
+        android:layout_marginBottom="72dp"
         android:contentDescription="@string/logogoogle"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.604"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo_google" />
-
-    <ImageView
-        android:id="@+id/imageFacebook"
-        android:layout_width="70dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="68dp"
-        android:contentDescription="@string/logofacebook"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.756"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/facebook" />
 
     <TextView
         android:id="@+id/textViewUsuario"
