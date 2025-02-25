@@ -1,20 +1,19 @@
 <resources>
-    <string name="app_name">ProjectErato</string>
-    <string name="boton_con_imagen">Botón con imagen</string>
-    <string name="banderas">Banderas</string>
+    <string name="app_name" translatable="false">Flaggen</string>
+    <string name="boton_con_imagen" translatable="false">Botón con imagen</string>
     <string name="capitales">Capitales</string>
     <string name="paises">Países</string>
-    <string name="botonvolumen">BotonVolumen</string>
-    <string name="botonmenu">BotonMenu</string>
-    <string name="botonvolver">BotonVolver</string>
+    <string name="botonvolumen" translatable="false">BotonVolumen</string>
+    <string name="botonmenu" translatable="false">BotonMenu</string>
+    <string name="botonvolver" translatable="false">BotonVolver</string>
     <string name="iniciar_sesion">Iniciar sesión</string>
-    <string name="usuario">Usuario</string>
-    <string name="fondo_blanco">fondo_blanco</string>
+    <string name="email" translatable="false">E-mail</string>
+    <string name="fondo_blanco" translatable="false">fondo_blanco</string>
     <string name="contrasenha">Contraseña</string>
     <string name="registrarse">Registrarse</string>
-    <string name="ajustes">Ajustes</string>
+    <string name="creditos">Créditos</string>
     <string name="idioma">Idioma</string>
-    <string name="descargar_datos">Descargar datos</string>
+    <string name="descargar_datos">Historial</string>
     <string name="cambiar_fondo">Cambiar fondo</string>
     <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="europa">Europa</string>
@@ -22,7 +21,36 @@
     <string name="america">America</string>
     <string name="africa">África</string>
     <string name="oceania">Oceanía</string>
-    <string name="click_me_to_win">Click me to win</string>
     <string name="menu">Menu</string>
-    <string name="logogoogle">logoGoogle</string>
+    <string name="logogoogle" translatable="false">logoGoogle</string>
+    <string name="prefs_file" translatable="false">com.pmydm.projecterato.PREFERENCE_FILE_KEY</string>
+    <string name="default_web_client_id" translatable="false">955024033374-mfpch21jp6g4vhhnba3ama8dast3u3tl.apps.googleusercontent.com</string>
+    <string name="logofacebook" translatable="false">logo facebook</string>
+    <string name="facebook_app_id" translatable="false">587762224149494</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb587762224149494</string>
+    <string name="facebook_client_token" translatable="false">c269f5430365b735a2bff6c915b9cb0c</string>
+    <string name="banderas">Banderas</string>
+    <string name="polaco">Polaco</string>
+    <string name="aleman">Alemán</string>
+    <string name="ingles">Inglés</string>
+    <string name="espanol">Español</string>
+    <string name="botonBandera" translatable="false">boton con bandera</string>
+    <string name="correcto">¡Correcto!</string>
+    <string name="incorrecto">¡Incorrecto!</string>
+    <string name="botonCantidad" translatable="false">botonCantidad\n</string>
+    <string name="mixto">Mixto</string>
+    <string name="capa_blanca" translatable="false">Capa blanca</string>
+    <string name="fondo_china" translatable="false">Fondo China</string>
+    <string name="marcomadera" translatable="false">marcoMadera</string>
+    <string name="fondo_app" translatable="false">Fondo App</string>
+    <string name="arte">Arte:</string>
+    <string name="botones">"Botones: "</string>
+    <string name="itch_io" translatable="false">Itch.io</string>
+    <string name="dibujante">Dibujante</string>
+    <string name="perfil">Perfil</string>
+    <string name="cambiar_nombre">Cambiar nombre</string>
+    <string name="anadir_bio">Añadir biografía</string>
+    <string name="anadir_region">Añadir región</string>
+    <string name="regi_n">Región</string>
+    <string name="biograf_a">Biografía</string>
 </resources>

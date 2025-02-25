@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/rootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondoapp"
@@ -82,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextUsuario"
+        app:layout_constraintTop_toBottomOf="@id/editTextEmail"
         tools:ignore="Autofill,DuplicateSpeakableTextCheck" />
 
     <TextView
@@ -97,16 +97,16 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="TextSizeCheck" />
 
     <EditText
-        android:id="@+id/editTextUsuario"
+        android:id="@+id/editTextEmail"
         android:layout_width="326dp"
         android:layout_height="50dp"
-        android:hint="@string/usuario"
-        android:inputType="textPersonName"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.468"
@@ -115,16 +115,17 @@
         app:layout_constraintVertical_bias="0.177"
         tools:ignore="Autofill,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
+
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageGoogle"
         android:layout_width="70dp"
         android:layout_height="59dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginBottom="72dp"
         android:contentDescription="@string/logogoogle"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.604"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/logo_google" />
 
@@ -132,11 +133,11 @@
         android:id="@+id/textViewUsuario"
         android:layout_width="118dp"
         android:layout_height="36dp"
-        android:text="@string/usuario"
+        android:text="@string/email"
         android:textAlignment="textStart"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/editTextUsuario"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="@+id/imageView"

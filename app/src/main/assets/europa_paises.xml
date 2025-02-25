@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE countries [
+    <!ELEMENT countries (country+)>
+
+    <!ELEMENT country (name, capital, flag)>
+
+    <!ELEMENT name (default, en, de, pl)>
+    <!ELEMENT default (#PCDATA)>
+    <!ELEMENT en (#PCDATA)>
+    <!ELEMENT de (#PCDATA)>
+    <!ELEMENT pl (#PCDATA)>
+
+    <!ELEMENT capital (default, en, de, pl)>
+    <!ELEMENT flag EMPTY>
+    <!ATTLIST flag path CDATA #REQUIRED>
+    ]>
+<countries>
+    <country>
+        <name>
+            <default>Albania</default>
+            <en>Albania</en>
+            <de>Albanien</de>
+            <pl>Albania</pl>
+        </name>
+        <capital>
+            <default>Tirana</default>
+            <en>Tirana</en>
+            <de>Tirana</de>
+            <pl>Tirana</pl>
+        </capital>
+        <flag path="Banderas/europa/Albania.png" />
+    </country>
+    <country>
+        <name>
+            <default>Alemania</default>
+            <en>Germany</en>
+            <de>Deutschland</de>
+            <pl>Niemcy</pl>
+        </name>
+        <capital>
+            <default>Berlín</default>
+            <en>Berlin</en>
+            <de>Berlin</de>
+            <pl>Berlin</pl>
+        </capital>
+        <flag path="Banderas/europa/Alemania.png" />
+    </country>
+    <country>
+        <name>
+            <default>Austria</default>
+            <en>Austria</en>
+            <de>Österreich</de>
+            <pl>Austria</pl>
+        </name>
+        <capital>
+            <default>Viena</default>
+            <en>Vienna</en>
+            <de>Wien</de>
+            <pl>Wiedeń</pl>
+        </capital>
+        <flag path="Banderas/europa/Austria.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bélgica</default>
+            <en>Belgium</en>
+            <de>Belgien</de>
+            <pl>Belgia</pl>
+        </name>
+        <capital>
+            <default>Bruselas</default>
+            <en>Brussels</en>
+            <de>Brüssel</de>
+            <pl>Bruksela</pl>
+        </capital>
+        <flag path="Banderas/europa/Belgica.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bielorrusia</default>
+            <en>Belarus</en>
+            <de>Weißrussland</de>
+            <pl>Białoruś</pl>
+        </name>
+        <capital>
+            <default>Minsk</default>
+            <en>Minsk</en>
+            <de>Minsk</de>
+            <pl>Minsk</pl>
+        </capital>
+        <flag path="Banderas/europa/Bielorrusia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bosnia y Herzegovina</default>
+            <en>Bosnia and Herzegovina</en>
+            <de>Bosnien und Herzegowina</de>
+            <pl>Bośnia i Hercegowina</pl>
+        </name>
+        <capital>
+            <default>Sarajevo</default>
+            <en>Sarajevo</en>
+            <de>Sarajewo</de>
+            <pl>Sarajewo</pl>
+        </capital>
+        <flag path="Banderas/europa/BosniaHerzegovina.png" />
+    </country>
+    <country>
+        <name>
+            <default>Bulgaria</default>
+            <en>Bulgaria</en>
+            <de>Bulgarien</de>
+            <pl>Bułgaria</pl>
+        </name>
+        <capital>
+            <default>Sofía</default>
+            <en>Sofia</en>
+            <de>Sofia</de>
+            <pl>Sofia</pl>
+        </capital>
+        <flag path="Banderas/europa/Bulgaria.png" />
+    </country>
+    <country>
+        <name>
+            <default>Chequia</default>
+            <en>Czech Republic</en>
+            <de>Tschechien</de>
+            <pl>Czechy</pl>
+        </name>
+        <capital>
+            <default>Praga</default>
+            <en>Prague</en>
+            <de>Prag</de>
+            <pl>Praga</pl>
+        </capital>
+        <flag path="Banderas/europa/Chequia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Croacia</default>
+            <en>Croatia</en>
+            <de>Kroatien</de>
+            <pl>Chorwacja</pl>
+        </name>
+        <capital>
+            <default>Zagreb</default>
+            <en>Zagreb</en>
+            <de>Zagreb</de>
+            <pl>Zagrzeb</pl>
+        </capital>
+        <flag path="Banderas/europa/Croacia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Dinamarca</default>
+            <en>Denmark</en>
+            <de>Dänemark</de>
+            <pl>Dania</pl>
+        </name>
+        <capital>
+            <default>Copenhague</default>
+            <en>Copenhagen</en>
+            <de>Kopenhagen</de>
+            <pl>Kopenhaga</pl>
+        </capital>
+        <flag path="Banderas/europa/Dinamarca.png" />
+    </country>
+    <country>
+        <name>
+            <default>Eslovaquia</default>
+            <en>Slovakia</en>
+            <de>Slowakei</de>
+            <pl>Słowacja</pl>
+        </name>
+        <capital>
+            <default>Bratislava</default>
+            <en>Bratislava</en>
+            <de>Bratislava</de>
+            <pl>Bratysława</pl>
+        </capital>
+        <flag path="Banderas/europa/Eslovaquia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Eslovenia</default>
+            <en>Slovenia</en>
+            <de>Slowenien</de>
+            <pl>Słowenia</pl>
+        </name>
+        <capital>
+            <default>Liubliana</default>
+            <en>Ljubljana</en>
+            <de>Ljubljana</de>
+            <pl>Lublana</pl>
+        </capital>
+        <flag path="Banderas/europa/Eslovenia.png" />
+    </country>
+    <country>
+        <name>
+            <default>España</default>
+            <en>Spain</en>
+            <de>Spanien</de>
+            <pl>Hiszpania</pl>
+        </name>
+        <capital>
+            <default>Madrid</default>
+            <en>Madrid</en>
+            <de>Madrid</de>
+            <pl>Madryt</pl>
+        </capital>
+        <flag path="Banderas/europa/Espana.png" />
+    </country>
+    <country>
+        <name>
+            <default>Estonia</default>
+            <en>Estonia</en>
+            <de>Estland</de>
+            <pl>Estonia</pl>
+        </name>
+        <capital>
+            <default>Tallin</default>
+            <en>Tallinn</en>
+            <de>Tallinn</de>
+            <pl>Tallin</pl>
+        </capital>
+        <flag path="Banderas/europa/Estonia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Finlandia</default>
+            <en>Finland</en>
+            <de>Finnland</de>
+            <pl>Finlandia</pl>
+        </name>
+        <capital>
+            <default>Helsinki</default>
+            <en>Helsinki</en>
+            <de>Helsinki</de>
+            <pl>Helsinki</pl>
+        </capital>
+        <flag path="Banderas/europa/Finlandia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Francia</default>
+            <en>France</en>
+            <de>Frankreich</de>
+            <pl>Francja</pl>
+        </name>
+        <capital>
+            <default>París</default>
+            <en>Paris</en>
+            <de>Paris</de>
+            <pl>Paryż</pl>
+        </capital>
+        <flag path="Banderas/europa/Francia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Grecia</default>
+            <en>Greece</en>
+            <de>Griechenland</de>
+            <pl>Grecja</pl>
+        </name>
+        <capital>
+            <default>Atenas</default>
+            <en>Athens</en>
+            <de>Athen</de>
+            <pl>Ateny</pl>
+        </capital>
+        <flag path="Banderas/europa/Grecia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Hungría</default>
+            <en>Hungary</en>
+            <de>Ungarn</de>
+            <pl>Węgry</pl>
+        </name>
+        <capital>
+            <default>Budapest</default>
+            <en>Budapest</en>
+            <de>Budapest</de>
+            <pl>Budapeszt</pl>
+        </capital>
+        <flag path="Banderas/europa/Hungria.png" />
+    </country>
+    <country>
+        <name>
+            <default>Irlanda</default>
+            <en>Ireland</en>
+            <de>Irland</de>
+            <pl>Irlandia</pl>
+        </name>
+        <capital>
+            <default>Dublín</default>
+            <en>Dublin</en>
+            <de>Dublin</de>
+            <pl>Dublin</pl>
+        </capital>
+        <flag path="Banderas/europa/Irlanda.png" />
+    </country>
+    <country>
+        <name>
+            <default>Islandia</default>
+            <en>Iceland</en>
+            <de>Island</de>
+            <pl>Islandia</pl>
+        </name>
+        <capital>
+            <default>Reikiavik</default>
+            <en>Reykjavik</en>
+            <de>Reykjavik</de>
+            <pl>Reykjavik</pl>
+        </capital>
+        <flag path="Banderas/europa/Islandia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Italia</default>
+            <en>Italy</en>
+            <de>Italien</de>
+            <pl>Włochy</pl>
+        </name>
+        <capital>
+            <default>Roma</default>
+            <en>Rome</en>
+            <de>Rom</de>
+            <pl>Rzym</pl>
+        </capital>
+        <flag path="Banderas/europa/Italia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Kosovo</default>
+            <en>Kosovo</en>
+            <de>Kosovo</de>
+            <pl>Kosowo</pl>
+        </name>
+        <capital>
+            <default>Pristina</default>
+            <en>Pristina</en>
+            <de>Priština</de>
+            <pl>Prisztina</pl>
+        </capital>
+        <flag path="Banderas/europa/Kosovo.png" />
+    </country>
+    <country>
+        <name>
+            <default>Letonia</default>
+            <en>Latvia</en>
+            <de>Letland</de>
+            <pl>Łotwa</pl>
+        </name>
+        <capital>
+            <default>Riga</default>
+            <en>Riga</en>
+            <de>Riga</de>
+            <pl>Ryga</pl>
+        </capital>
+        <flag path="Banderas/europa/Letonia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Lituania</default>
+            <en>Lithuania</en>
+            <de>Litauen</de>
+            <pl>Litwa</pl>
+        </name>
+        <capital>
+            <default>Vilna</default>
+            <en>Vilnius</en>
+            <de>Vilnius</de>
+            <pl>Wilno</pl>
+        </capital>
+        <flag path="Banderas/europa/Lituania.png" />
+    </country>
+    <country>
+        <name>
+            <default>Luxemburgo</default>
+            <en>Luxembourg</en>
+            <de>Luxemburg</de>
+            <pl>Luksemburg</pl>
+        </name>
+        <capital>
+            <default>Ciudad de Luxemburgo</default>
+            <en>Luxembourg City</en>
+            <de>Luxemburg-Stadt</de>
+            <pl>Luksemburg</pl>
+        </capital>
+        <flag path="Banderas/europa/Luxemburgo.png" />
+    </country>
+    <country>
+        <name>
+            <default>Macedonia del norte</default>
+            <en>North Macedonia</en>
+            <de>Nordmazedonien</de>
+            <pl>Północna Macedonia</pl>
+        </name>
+        <capital>
+            <default>Skopie</default>
+            <en>Skopje</en>
+            <de>Skopje</de>
+            <pl>Skopje</pl>
+        </capital>
+        <flag path="Banderas/europa/Macedonia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Moldavia</default>
+            <en>Moldova</en>
+            <de>Moldawien</de>
+            <pl>Mołdawia</pl>
+        </name>
+        <capital>
+            <default>Chisináu</default>
+            <en>Chisinau</en>
+            <de>Chișinău</de>
+            <pl>Kiszyniów</pl>
+        </capital>
+        <flag path="Banderas/europa/Moldavia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Montenegro</default>
+            <en>Montenegro</en>
+            <de>Montenegro</de>
+            <pl>Monako</pl>
+        </name>
+        <capital>
+            <default>Podgorica</default>
+            <en>Podgorica</en>
+            <de>Podgorica</de>
+            <pl>Podgorica</pl>
+        </capital>
+        <flag path="Banderas/europa/Montenegro.png" />
+    </country>
+    <country>
+        <name>
+            <default>Noruega</default>
+            <en>Norway</en>
+            <de>Norwegen</de>
+            <pl>Norwegia</pl>
+        </name>
+        <capital>
+            <default>Oslo</default>
+            <en>Oslo</en>
+            <de>Oslo</de>
+            <pl>Oslo</pl>
+        </capital>
+        <flag path="Banderas/europa/Noruega.png" />
+    </country>
+    <country>
+        <name>
+            <default>Países Bajos</default>
+            <en>Netherlands</en>
+            <de>Niederlande</de>
+            <pl>Holandia</pl>
+        </name>
+        <capital>
+            <default>Ámsterdam</default>
+            <en>Amsterdam</en>
+            <de>Amsterdam</de>
+            <pl>Amsterdam</pl>
+        </capital>
+        <flag path="Banderas/europa/PaisesBajos.png" />
+    </country>
+    <country>
+        <name>
+            <default>Polonia</default>
+            <en>Poland</en>
+            <de>Polen</de>
+            <pl>Polska</pl>
+        </name>
+        <capital>
+            <default>Varsovia</default>
+            <en>Warsaw</en>
+            <de>Warschau</de>
+            <pl>Warszawa</pl>
+        </capital>
+        <flag path="Banderas/europa/Polonia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Portugal</default>
+            <en>Portugal</en>
+            <de>Portugal</de>
+            <pl>Portugalia</pl>
+        </name>
+        <capital>
+            <default>Lisboa</default>
+            <en>Lisbon</en>
+            <de>Lissabon</de>
+            <pl>Lizbona</pl>
+        </capital>
+        <flag path="Banderas/europa/Portugal.png" />
+    </country>
+    <country>
+        <name>
+            <default>Reino Unido</default>
+            <en>United Kingdom</en>
+            <de>Vereinigtes Königreich</de>
+            <pl>Wielka Brytania</pl>
+        </name>
+        <capital>
+            <default>Londres</default>
+            <en>London</en>
+            <de>London</de>
+            <pl>Londyn</pl>
+        </capital>
+        <flag path="Banderas/europa/ReinoUnido.png" />
+    </country>
+    <country>
+        <name>
+            <default>Rumanía</default>
+            <en>Romania</en>
+            <de>Rumänien</de>
+            <pl>Rumunia</pl>
+        </name>
+        <capital>
+            <default>Bucarest</default>
+            <en>Bucharest</en>
+            <de>Bukarest</de>
+            <pl>Bukareszt</pl>
+        </capital>
+        <flag path="Banderas/europa/Rumania.png" />
+    </country>
+    <country>
+        <name>
+            <default>Rusia</default>
+            <en>Russia</en>
+            <de>Russland</de>
+            <pl>Rosja</pl>
+        </name>
+        <capital>
+            <default>Moscú</default>
+            <en>Moscow</en>
+            <de>Moskau</de>
+            <pl>Moskwa</pl>
+        </capital>
+        <flag path="Banderas/europa/Rusia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Serbia</default>
+            <en>Serbia</en>
+            <de>Serbien</de>
+            <pl>Serbia</pl>
+        </name>
+        <capital>
+            <default>Belgrado</default>
+            <en>Belgrade</en>
+            <de>Belgrad</de>
+            <pl>Belgrad</pl>
+        </capital>
+        <flag path="Banderas/europa/Serbia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Suecia</default>
+            <en>Sweden</en>
+            <de>Schweden</de>
+            <pl>Szwecja</pl>
+        </name>
+        <capital>
+            <default>Estocolmo</default>
+            <en>Stockholm</en>
+            <de>Stockholm</de>
+            <pl>Sztokholm</pl>
+        </capital>
+        <flag path="Banderas/europa/Suecia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Suiza</default>
+            <en>Switzerland</en>
+            <de>Schweiz</de>
+            <pl>Szwajcaria</pl>
+        </name>
+        <capital>
+            <default>Berna</default>
+            <en>Bern</en>
+            <de>Bern</de>
+            <pl>Bern</pl>
+        </capital>
+        <flag path="Banderas/europa/Suiza.png" />
+    </country>
+    <country>
+        <name>
+            <default>Ucrania</default>
+            <en>Ukraine</en>
+            <de>Ukraine</de>
+            <pl>Ukraina</pl>
+        </name>
+        <capital>
+            <default>Kiev</default>
+            <en>Kyiv</en>
+            <de>Kiew</de>
+            <pl>Kijów</pl>
+        </capital>
+        <flag path="Banderas/europa/Ucrania.png" />
+    </country>
+</countries>

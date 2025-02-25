@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE countries [
+    <!ELEMENT countries (country+)>
+    <!ELEMENT country (name, capital, flag)>
+    <!ELEMENT name (default, en, de, pl)>
+    <!ELEMENT capital (default, en, de, pl)>
+    <!ELEMENT default (#PCDATA)>
+    <!ELEMENT en (#PCDATA)>
+    <!ELEMENT de (#PCDATA)>
+    <!ELEMENT pl (#PCDATA)>
+    <!ELEMENT flag EMPTY>
+    <!ATTLIST flag path CDATA #REQUIRED>
+    ]>
+<countries>
+    <country>
+        <name>
+            <default>Angola</default>
+            <en>Angola</en>
+            <de>Angola</de>
+            <pl>Angola</pl>
+        </name>
+        <capital>
+            <default>Luanda</default>
+            <en>Luanda</en>
+            <de>Luanda</de>
+            <pl>Luanda</pl>
+        </capital>
+        <flag path="Banderas/Africa/Angola.png" />
+    </country>
+    <country>
+        <name>
+            <default>Argelia</default>
+            <en>Algeria</en>
+            <de>Algerien</de>
+            <pl>Algieria</pl>
+        </name>
+        <capital>
+            <default>Argel</default>
+            <en>Algiers</en>
+            <de>Algier</de>
+            <pl>Algier</pl>
+        </capital>
+        <flag path="Banderas/Africa/Argelia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Benín</default>
+            <en>Benin</en>
+            <de>Benin</de>
+            <pl>Benin</pl>
+        </name>
+        <capital>
+            <default>Porto-Novo</default>
+            <en>Porto-Novo</en>
+            <de>Porto-Novo</de>
+            <pl>Porto-Novo</pl>
+        </capital>
+        <flag path="Banderas/Africa/Benin.png" />
+    </country>
+    <country>
+        <name>
+            <default>Botsuana</default>
+            <en>Botswana</en>
+            <de>Botswana</de>
+            <pl>Botswana</pl>
+        </name>
+        <capital>
+            <default>Gaborone</default>
+            <en>Gaborone</en>
+            <de>Gaborone</de>
+            <pl>Gaborone</pl>
+        </capital>
+        <flag path="Banderas/Africa/Botsuana.png" />
+    </country>
+    <country>
+        <name>
+            <default>Burkina Faso</default>
+            <en>Burkina Faso</en>
+            <de>Burkina Faso</de>
+            <pl>Burkina Faso</pl>
+        </name>
+        <capital>
+            <default>Uagadugú</default>
+            <en>Ouagadougou</en>
+            <de>Ouagadougou</de>
+            <pl>Wagadugu</pl>
+        </capital>
+        <flag path="Banderas/Africa/BurkinaFaso.png" />
+    </country>
+    <country>
+        <name>
+            <default>Burundi</default>
+            <en>Burundi</en>
+            <de>Burundi</de>
+            <pl>Burundi</pl>
+        </name>
+        <capital>
+            <default>Gitega</default>
+            <en>Gitega</en>
+            <de>Gitega</de>
+            <pl>Gitega</pl>
+        </capital>
+        <flag path="Banderas/Africa/Burundi.png" />
+    </country>
+    <country>
+        <name>
+            <default>Camerún</default>
+            <en>Cameroon</en>
+            <de>Kamerun</de>
+            <pl>Kamerun</pl>
+        </name>
+        <capital>
+            <default>Yaundé</default>
+            <en>Yaoundé</en>
+            <de>Jaunde</de>
+            <pl>Jaunde</pl>
+        </capital>
+        <flag path="Banderas/Africa/Camerun.png" />
+    </country>
+    <country>
+        <name>
+            <default>Chad</default>
+            <en>Chad</en>
+            <de>Tschad</de>
+            <pl>Czad</pl>
+        </name>
+        <capital>
+            <default>Yamena</default>
+            <en>N'Djamena</en>
+            <de>N'Djamena</de>
+            <pl>N'Djamena</pl>
+        </capital>
+        <flag path="Banderas/Africa/Chad.png" />
+    </country>
+    <country>
+        <name>
+            <default>Costa de Marfil</default>
+            <en>Ivory Coast</en>
+            <de>Elfenbeinküste</de>
+            <pl>Wybrzeże Kości Słoniowej</pl>
+        </name>
+        <capital>
+            <default>Yamusukro</default>
+            <en>Yamoussoukro</en>
+            <de>Yamoussoukro</de>
+            <pl>Jamuszokro</pl>
+        </capital>
+        <flag path="Banderas/Africa/CostaDeMarfil.png" />
+    </country>
+    <country>
+        <name>
+            <default>Egipto</default>
+            <en>Egypt</en>
+            <de>Ägypten</de>
+            <pl>Egipt</pl>
+        </name>
+        <capital>
+            <default>El Cairo</default>
+            <en>Cairo</en>
+            <de>Kairo</de>
+            <pl>Kair</pl>
+        </capital>
+        <flag path="Banderas/Africa/Egipto.png" />
+    </country>
+    <country>
+        <name>
+            <default>Eritrea</default>
+            <en>Eritrea</en>
+            <de>Eritrea</de>
+            <pl>Erytrea</pl>
+        </name>
+        <capital>
+            <default>Asmara</default>
+            <en>Asmara</en>
+            <de>Asmara</de>
+            <pl>Asmara</pl>
+        </capital>
+        <flag path="Banderas/Africa/Eritrea.png" />
+    </country>
+    <country>
+        <name>
+            <default>Etiopía</default>
+            <en>Ethiopia</en>
+            <de>Äthiopien</de>
+            <pl>Etiopia</pl>
+        </name>
+        <capital>
+            <default>Adís Abeba</default>
+            <en>Addis Ababa</en>
+            <de>Addis Abeba</de>
+            <pl>Addis Abeba</pl>
+        </capital>
+        <flag path="Banderas/Africa/Etiopia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Gabón</default>
+            <en>Gabon</en>
+            <de>Gabun</de>
+            <pl>Gabon</pl>
+        </name>
+        <capital>
+            <default>Libreville</default>
+            <en>Libreville</en>
+            <de>Libreville</de>
+            <pl>Libreville</pl>
+        </capital>
+        <flag path="Banderas/Africa/Gabon.png" />
+    </country>
+    <country>
+        <name>
+            <default>Gambia</default>
+            <en>The Gambia</en>
+            <de>Gambia</de>
+            <pl>Gambia</pl>
+        </name>
+        <capital>
+            <default>Banjul</default>
+            <en>Banjul</en>
+            <de>Banjul</de>
+            <pl>Banjul</pl>
+        </capital>
+        <flag path="Banderas/Africa/Gambia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Ghana</default>
+            <en>Ghana</en>
+            <de>Ghana</de>
+            <pl>Ghana</pl>
+        </name>
+        <capital>
+            <default>Acra</default>
+            <en>Accra</en>
+            <de>Accra</de>
+            <pl>Akra</pl>
+        </capital>
+        <flag path="Banderas/Africa/Ghana.png" />
+    </country>
+    <country>
+        <name>
+            <default>Guinea</default>
+            <en>Guinea</en>
+            <de>Guinea</de>
+            <pl>Gwinea</pl>
+        </name>
+        <capital>
+            <default>Conakri</default>
+            <en>Conakry</en>
+            <de>Conakry</de>
+            <pl>Konakry</pl>
+        </capital>
+        <flag path="Banderas/Africa/Guinea.png" />
+    </country>
+    <country>
+        <name>
+            <default>Guinea-Bisáu</default>
+            <en>Guinea-Bissau</en>
+            <de>Guinea-Bissau</de>
+            <pl>Gwinea Bissau</pl>
+        </name>
+        <capital>
+            <default>Bissau</default>
+            <en>Bissau</en>
+            <de>Bissau</de>
+            <pl>Bissau</pl>
+        </capital>
+        <flag path="Banderas/Africa/GuineaBissau.png" />
+    </country>
+    <country>
+        <name>
+            <default>Guinea Ecuatorial</default>
+            <en>Equatorial Guinea</en>
+            <de>Äquatorialguinea</de>
+            <pl>Gwinea Równikowa</pl>
+        </name>
+        <capital>
+            <default>Malabo</default>
+            <en>Malabo</en>
+            <de>Malabo</de>
+            <pl>Malabo</pl>
+        </capital>
+        <flag path="Banderas/Africa/GuineaEcuatorial.png" />
+    </country>
+    <country>
+        <name>
+            <default>Kenia</default>
+            <en>Kenya</en>
+            <de>Kenia</de>
+            <pl>Kenia</pl>
+        </name>
+        <capital>
+            <default>Nairobi</default>
+            <en>Nairobi</en>
+            <de>Nairobi</de>
+            <pl>Nairobi</pl>
+        </capital>
+        <flag path="Banderas/Africa/Kenia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Lesoto</default>
+            <en>Lesotho</en>
+            <de>Lesotho</de>
+            <pl>Lesotho</pl>
+        </name>
+        <capital>
+            <default>Maseru</default>
+            <en>Maseru</en>
+            <de>Maseru</de>
+            <pl>Maseru</pl>
+        </capital>
+        <flag path="Banderas/Africa/Lesoto.png" />
+    </country>
+        <country>
+            <name>
+                <default>Liberia</default>
+                <en>Liberia</en>
+                <de>Liberia</de>
+                <pl>Liberia</pl>
+            </name>
+            <capital>
+                <default>Monrovia</default>
+                <en>Monrovia</en>
+                <de>Monrovia</de>
+                <pl>Monrovia</pl>
+            </capital>
+            <flag path="Banderas/Africa/Liberia.png" />
+        </country>
+        <country>
+            <name>
+                <default>Libia</default>
+                <en>Libya</en>
+                <de>Libyen</de>
+                <pl>Libia</pl>
+            </name>
+            <capital>
+                <default>Trípoli</default>
+                <en>Tripoli</en>
+                <de>Tripolis</de>
+                <pl>Trypolis</pl>
+            </capital>
+            <flag path="Banderas/Africa/Libia.png" />
+        </country>
+        <country>
+            <name>
+                <default>Madagascar</default>
+                <en>Madagascar</en>
+                <de>Madagaskar</de>
+                <pl>Madagaskar</pl>
+            </name>
+            <capital>
+                <default>Antananarivo</default>
+                <en>Antananarivo</en>
+                <de>Antananarivo</de>
+                <pl>Antananarywa</pl>
+            </capital>
+            <flag path="Banderas/Africa/Madagascar.png" />
+        </country>
+        <country>
+            <name>
+                <default>Malawi</default>
+                <en>Malawi</en>
+                <de>Malawi</de>
+                <pl>Malawi</pl>
+            </name>
+            <capital>
+                <default>Lilongüe</default>
+                <en>Lilongwe</en>
+                <de>Lilongwe</de>
+                <pl>Lilongwe</pl>
+            </capital>
+            <flag path="Banderas/Africa/Malawi.png" />
+        </country>
+        <country>
+            <name>
+                <default>Mali</default>
+                <en>Mali</en>
+                <de>Mali</de>
+                <pl>Mali</pl>
+            </name>
+            <capital>
+                <default>Bamako</default>
+                <en>Bamako</en>
+                <de>Bamako</de>
+                <pl>Bamako</pl>
+            </capital>
+            <flag path="Banderas/Africa/Mali.png" />
+        </country>
+        <country>
+            <name>
+                <default>Marruecos</default>
+                <en>Morocco</en>
+                <de>Marokko</de>
+                <pl>Maroko</pl>
+            </name>
+            <capital>
+                <default>Rabat</default>
+                <en>Rabat</en>
+                <de>Rabat</de>
+                <pl>Rabat</pl>
+            </capital>
+            <flag path="Banderas/Africa/Marruecos.png" />
+        </country>
+        <country>
+            <name>
+                <default>Mauritania</default>
+                <en>Mauritania</en>
+                <de>Mauretanien</de>
+                <pl>Mauritania</pl>
+            </name>
+            <capital>
+                <default>Nuakchot</default>
+                <en>Nouakchott</en>
+                <de>Nouakchott</de>
+                <pl>Nuakszut</pl>
+            </capital>
+            <flag path="Banderas/Africa/Mauritania.png" />
+        </country>
+        <country>
+            <name>
+                <default>Mozambique</default>
+                <en>Mozambique</en>
+                <de>Mosambik</de>
+                <pl>Mozambik</pl>
+            </name>
+            <capital>
+                <default>Maputo</default>
+                <en>Maputo</en>
+                <de>Maputo</de>
+                <pl>Maputo</pl>
+            </capital>
+            <flag path="Banderas/Africa/Mozambique.png" />
+        </country>
+        <country>
+            <name>
+                <default>Namibia</default>
+                <en>Namibia</en>
+                <de>Namibia</de>
+                <pl>Namibia</pl>
+            </name>
+            <capital>
+                <default>Windhoek</default>
+                <en>Windhoek</en>
+                <de>Windhoek</de>
+                <pl>Windhuk</pl>
+            </capital>
+            <flag path="Banderas/Africa/Namibia.png" />
+        </country>
+        <country>
+            <name>
+                <default>Níger</default>
+                <en>Niger</en>
+                <de>Niger</de>
+                <pl>Niger</pl>
+            </name>
+            <capital>
+                <default>Niamey</default>
+                <en>Niamey</en>
+                <de>Niamey</de>
+                <pl>Niamey</pl>
+            </capital>
+            <flag path="Banderas/Africa/Niger.png" />
+        </country>
+        <country>
+            <name>
+                <default>Nigeria</default>
+                <en>Nigeria</en>
+                <de>Nigeria</de>
+                <pl>Nigeria</pl>
+            </name>
+            <capital>
+                <default>Abuya</default>
+                <en>Abuja</en>
+                <de>Abuja</de>
+                <pl>Abudża</pl>
+            </capital>
+            <flag path="Banderas/Africa/Nigeria.png" />
+        </country>
+    <country>
+        <name>
+            <default>República Centroafricana</default>
+            <en>Central African Republic</en>
+            <de>Zentralafrikanische Republik</de>
+            <pl>Republika Środkowoafrykańska</pl>
+        </name>
+        <capital>
+            <default>Bangui</default>
+            <en>Bangui</en>
+            <de>Bangui</de>
+            <pl>Bangui</pl>
+        </capital>
+        <flag path="Banderas/Africa/RepublicaCentroafricana.png" />
+    </country>
+    <country>
+        <name>
+            <default>República del Congo</default>
+            <en>Republic of the Congo</en>
+            <de>Republik Kongo</de>
+            <pl>Republika Konga</pl>
+        </name>
+        <capital>
+            <default>Brazzaville</default>
+            <en>Brazzaville</en>
+            <de>Brazzaville</de>
+            <pl>Brazzaville</pl>
+        </capital>
+        <flag path="Banderas/Africa/RepublicaCongo.png" />
+    </country>
+    <country>
+        <name>
+            <default>República Democrática del Congo</default>
+            <en>Democratic Republic of the Congo</en>
+            <de>Demokratische Republik Kongo</de>
+            <pl>Demokratyczna Republika Konga</pl>
+        </name>
+        <capital>
+            <default>Kinsasa</default>
+            <en>Kinshasa</en>
+            <de>Kinshasa</de>
+            <pl>Kinszasa</pl>
+        </capital>
+        <flag path="Banderas/Africa/RepúblicaDemocráticaCongo.png" />
+    </country>
+    <country>
+        <name>
+            <default>Ruanda</default>
+            <en>Rwanda</en>
+            <de>Ruanda</de>
+            <pl>Rwanda</pl>
+        </name>
+        <capital>
+            <default>Kigali</default>
+            <en>Kigali</en>
+            <de>Kigali</de>
+            <pl>Kigali</pl>
+        </capital>
+        <flag path="Banderas/Africa/Ruanda.png" />
+    </country>
+    <country>
+        <name>
+            <default>Sahara Occidental</default>
+            <en>Western Sahara</en>
+            <de>Westsahara</de>
+            <pl>Sahara Zachodnia</pl>
+        </name>
+        <capital>
+            <default>El Aaiún</default>
+            <en>Laayoune</en>
+            <de>El Aaiún</de>
+            <pl>Al-Ujun</pl>
+        </capital>
+        <flag path="Banderas/Africa/SaharaOccidental.png" />
+    </country>
+    <country>
+        <name>
+            <default>Senegal</default>
+            <en>Senegal</en>
+            <de>Senegal</de>
+            <pl>Senegal</pl>
+        </name>
+        <capital>
+            <default>Dakar</default>
+            <en>Dakar</en>
+            <de>Dakar</de>
+            <pl>Dakar</pl>
+        </capital>
+        <flag path="Banderas/Africa/Senegal.png" />
+    </country>
+    <country>
+        <name>
+            <default>Sierra Leona</default>
+            <en>Sierra Leone</en>
+            <de>Sierra Leone</de>
+            <pl>Sierra Leone</pl>
+        </name>
+        <capital>
+            <default>Freetown</default>
+            <en>Freetown</en>
+            <de>Freetown</de>
+            <pl>Freetown</pl>
+        </capital>
+        <flag path="Banderas/Africa/SierraLeona.png" />
+    </country>
+    <country>
+        <name>
+            <default>Somalia</default>
+            <en>Somalia</en>
+            <de>Somalia</de>
+            <pl>Somalia</pl>
+        </name>
+        <capital>
+            <default>Mogadiscio</default>
+            <en>Mogadishu</en>
+            <de>Mogadischu</de>
+            <pl>Mogadiszu</pl>
+        </capital>
+        <flag path="Banderas/Africa/Somalia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Suazilandia</default>
+            <en>Eswatini</en>
+            <de>Eswatini</de>
+            <pl>Eswatini</pl>
+        </name>
+        <capital>
+            <default>Mbabane</default>
+            <en>Mbabane</en>
+            <de>Mbabane</de>
+            <pl>Mbabane</pl>
+        </capital>
+        <flag path="Banderas/Africa/Suazilandia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Sudáfrica</default>
+            <en>South Africa</en>
+            <de>Südafrika</de>
+            <pl>Republika Południowej Afryki</pl>
+        </name>
+        <capital>
+            <default>Pretoria</default>
+            <en>Pretoria</en>
+            <de>Pretoria</de>
+            <pl>Pretoria</pl>
+        </capital>
+        <flag path="Banderas/Africa/Sudafrica.png" />
+    </country>
+    <country>
+        <name>
+            <default>Sudán</default>
+            <en>Sudan</en>
+            <de>Sudan</de>
+            <pl>Sudan</pl>
+        </name>
+        <capital>
+            <default>Jartum</default>
+            <en>Khartoum</en>
+            <de>Khartum</de>
+            <pl>Chartum</pl>
+        </capital>
+        <flag path="Banderas/Africa/Sudan.png" />
+    </country>
+    <country>
+        <name>
+            <default>Sudán del Sur</default>
+            <en>South Sudan</en>
+            <de>Südsudan</de>
+            <pl>Sudan Południowy</pl>
+        </name>
+        <capital>
+            <default>Yuba</default>
+            <en>Juba</en>
+            <de>Juba</de>
+            <pl>Dżuba</pl>
+        </capital>
+        <flag path="Banderas/Africa/SudandelSur.png" />
+    </country>
+    <country>
+        <name>
+            <default>Tanzania</default>
+            <en>Tanzania</en>
+            <de>Tansania</de>
+            <pl>Tanzania</pl>
+        </name>
+        <capital>
+            <default>Dodoma</default>
+            <en>Dodoma</en>
+            <de>Dodoma</de>
+            <pl>Dodoma</pl>
+        </capital>
+        <flag path="Banderas/Africa/Tanzania.png" />
+    </country>
+    <country>
+        <name>
+            <default>Togo</default>
+            <en>Togo</en>
+            <de>Togo</de>
+            <pl>Togo</pl>
+        </name>
+        <capital>
+            <default>Lomé</default>
+            <en>Lomé</en>
+            <de>Lomé</de>
+            <pl>Lome</pl>
+        </capital>
+        <flag path="Banderas/Africa/Togo.png" />
+    </country>
+    <country>
+        <name>
+            <default>Túnez</default>
+            <en>Tunisia</en>
+            <de>Tunesien</de>
+            <pl>Tunezja</pl>
+        </name>
+        <capital>
+            <default>Túnez</default>
+            <en>Tunis</en>
+            <de>Tunis</de>
+            <pl>Tunis</pl>
+        </capital>
+        <flag path="Banderas/Africa/Tunez.png" />
+    </country>
+    <country>
+        <name>
+            <default>Uganda</default>
+            <en>Uganda</en>
+            <de>Uganda</de>
+            <pl>Uganda</pl>
+        </name>
+        <capital>
+            <default>Kampala</default>
+            <en>Kampala</en>
+            <de>Kampala</de>
+            <pl>Kampala</pl>
+        </capital>
+        <flag path="Banderas/Africa/Uganda.png" />
+    </country>
+    <country>
+        <name>
+            <default>Yibuti</default>
+            <en>Djibouti</en>
+            <de>Dschibuti</de>
+            <pl>Dżibuti</pl>
+        </name>
+        <capital>
+            <default>Yibuti</default>
+            <en>Djibouti</en>
+            <de>Dschibuti</de>
+            <pl>Dżibuti</pl>
+        </capital>
+        <flag path="Banderas/Africa/Yibuti.png" />
+    </country>
+    <country>
+        <name>
+            <default>Zambia</default>
+            <en>Zambia</en>
+            <de>Sambia</de>
+            <pl>Zambia</pl>
+        </name>
+        <capital>
+            <default>Lusaka</default>
+            <en>Lusaka</en>
+            <de>Lusaka</de>
+            <pl>Lusaka</pl>
+        </capital>
+        <flag path="Banderas/Africa/Zambia.png" />
+    </country>
+    <country>
+        <name>
+            <default>Zimbabue</default>
+            <en>Zimbabwe</en>
+            <de>Simbabwe</de>
+            <pl>Zimbabwe</pl>
+        </name>
+        <capital>
+            <default>Harare</default>
+            <en>Harare</en>
+            <de>Harare</de>
+            <pl>Harare</pl>
+        </capital>
+        <flag path="Banderas/Africa/Zimbabue.png" />
+    </country>
+    </countries>

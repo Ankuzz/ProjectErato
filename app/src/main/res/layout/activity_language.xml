@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoapp"
+    android:scaleType="centerCrop"
+    tools:context=".LanguageActivity">
+
+    <ImageButton
+        android:id="@+id/imageButtonVolver"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/button_square_background"
+        android:contentDescription="@string/botonvolver"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/flecha"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <ImageButton
+        android:id="@+id/imageButtonVolumen"
+        android:layout_width="63dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_square_background"
+        android:contentDescription="@string/botonvolumen"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconovolumenencendido" />
+
+
+    <Button
+        android:id="@+id/buttonEspanol"
+        android:layout_width="217dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="97dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/bungee_regular"
+        android:paddingBottom="9dp"
+        android:text="@string/espanol"
+        android:textColor="#6F5D47"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonDeutsch" />
+
+    <Button
+        android:id="@+id/buttonDeutsch"
+        android:layout_width="217dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="97dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/bungee_regular"
+        android:paddingBottom="9dp"
+        android:text="@string/aleman"
+        android:textColor="#6F5D47"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonIngles"
+        android:layout_width="217dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="97dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/bungee_regular"
+        android:paddingBottom="9dp"
+        android:text="@string/ingles"
+        android:textColor="#6F5D47"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonPolaco" />
+
+    <Button
+        android:id="@+id/buttonPolaco"
+        android:layout_width="217dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="97dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/bungee_regular"
+        android:paddingBottom="9dp"
+        android:text="@string/polaco"
+        android:textColor="#6F5D47"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonEspanol" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
