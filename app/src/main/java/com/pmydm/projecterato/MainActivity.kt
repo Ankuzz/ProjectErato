@@ -1,10 +1,12 @@
 package com.pmydm.projecterato
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.database.sqlite.SQLiteDatabase
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -16,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.contentValuesOf
 import com.google.firebase.auth.FirebaseAuth
+import java.util.Locale
 
 
 enum class ProviderType {
@@ -42,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         botones()
 
         session()
+
+
 
     }
 
@@ -152,6 +157,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("Range")
     private fun session() {
         val prefs = getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE)
         val email = prefs.getString("email", null)
@@ -223,10 +229,6 @@ class MainActivity : AppCompatActivity() {
             cursor.close()
         }
     }
-
-
-
-
 
     private fun botones(){
         val buttonPaises: Button = findViewById(R.id.buttonPaises)

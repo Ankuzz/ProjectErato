@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.FileProvider
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.marginBottom
 import com.google.firebase.auth.FirebaseAuth
 import java.io.File
 import java.io.FileOutputStream
@@ -61,18 +62,19 @@ class HistoryActivity : AppCompatActivity() {
 
         // Obtener datos del usuario
         val user = FirebaseAuth.getInstance().currentUser
-        val username = user?.displayName ?: "Usuario Desconocido"
-        val bio = getUserBio(user?.uid)
+        val username = user!!.displayName ?: "Usuario Desconocido"
+        val bio = getUserBio(user.uid)
+        val userRegion = getUserRegion(user?.uid)  // Obtener la región del usuario desde la base de datos
 
         // Dibujar el nombre de usuario
         paint.textSize = 24f
         paint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
         canvas.drawText(username, 50f, 70f, paint)
 
-        // Dibujar la región
+        // Dibujar la región del usuario (perfil)
         paint.textSize = 18f
         paint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
-        canvas.drawText("Región: $region", 50f, 120f, paint)
+        canvas.drawText("Región: $userRegion", 50f, 120f, paint)  // Aquí se muestra la región del perfil
 
         // Dibujar la biografía
         paint.textSize = 16f
@@ -91,7 +93,7 @@ class HistoryActivity : AppCompatActivity() {
         paint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL)
         canvas.drawText("Modo: $mode", 50f, yPosition, paint)
         yPosition += 40f
-        canvas.drawText("Región: $region", 50f, yPosition, paint)
+        canvas.drawText("Región: $region", 50f, yPosition, paint)  // Aquí se muestra la región de la partida
         yPosition += 40f
 
         // Ajustar el texto del estilo
@@ -162,15 +164,27 @@ class HistoryActivity : AppCompatActivity() {
         pdfDocument.close()
     }
 
+    // Método para obtener la región del usuario desde la base de datos
+    private fun getUserRegion(userId: String?): String {
+        val db = QuizDatabaseHelper(this).readableDatabase
+        val cursor = db.rawQuery("SELECT region FROM Users WHERE user_id = ?", arrayOf(userId))
+        cursor.moveToFirst()
+        val region = cursor.getString(0) ?: "Región no disponible"
+        cursor.close()
+        return region
+    }
 
-    private fun getUserBio(userId: String?): String {
+
+
+    fun getUserBio(userId: String): String {
         val db = dbHelper.readableDatabase
         val cursor = db.rawQuery("SELECT bio FROM Users WHERE user_id = ?", arrayOf(userId))
-        cursor.moveToFirst()
-        val bio = cursor.getString(0)
+
+        val bio = if (cursor.moveToFirst()) cursor.getString(0) else "Sin biografía"
         cursor.close()
         return bio
     }
+
 
     private fun getQuestionsForGame(gameId: Int): List<Question> {
         val db = dbHelper.readableDatabase
@@ -257,6 +271,9 @@ class HistoryActivity : AppCompatActivity() {
         val db = dbHelper.readableDatabase
         val username = getUsername()
 
+        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        val languageCode = sharedPreferences.getString("language_code", "es") ?: "es"
+
         val cursor = db.rawQuery(
             "SELECT * FROM Games WHERE username = ? ORDER BY date DESC LIMIT 5",
             arrayOf(username)
@@ -273,18 +290,79 @@ class HistoryActivity : AppCompatActivity() {
             val style = cursor.getString(cursor.getColumnIndexOrThrow("style"))
             val aciertos = getAciertosForGame(gameId)
 
+            val translatedMode = when (mode) {
+                "Capitales" -> when (languageCode) {
+                    "en" -> "Capitals"
+                    "de" -> "Hauptstädte"
+                    "pl" -> "Stolice"
+                    else -> "Capitales"
+                }
+                "Paises" -> when (languageCode) {
+                    "en" -> "Countries"
+                    "de" -> "Länder"
+                    "pl" -> "Kraje"
+                    else -> "Paises"
+                }
+                "Mixto" -> when (languageCode) {
+                    "en" -> "Mixed"
+                    "de" -> "Gemischt"
+                    "pl" -> "Mieszane"
+                    else -> "Mixto"
+                }
+                else -> mode
+            }
+
+            val translatedRegion = when (region) {
+                "Europa" -> when (languageCode) {
+                    "en" -> "Europe"
+                    "de" -> "Europa"
+                    "pl" -> "Europa"
+                    else -> "Europa"
+                }
+                "Oceania" -> when (languageCode) {
+                    "en" -> "Oceania"
+                    "de" -> "Ozeanien"
+                    "pl" -> "Oceania"
+                    else -> "Oceania"
+                }
+                "Africa" -> when (languageCode) {
+                    "en" -> "Africa"
+                    "de" -> "Afrika"
+                    "pl" -> "Afryka"
+                    else -> "Africa"
+                }
+                "America" -> when (languageCode) {
+                    "en" -> "America"
+                    "de" -> "Amerika"
+                    "pl" -> "Ameryka"
+                    else -> "America"
+                }
+                "Asia" -> when (languageCode) {
+                    "en" -> "Asia"
+                    "de" -> "Asien"
+                    "pl" -> "Azja"
+                    else -> "Asia"
+                }
+                else -> region
+            }
+
+            val aciertosTextLabel = when (languageCode) {
+                "es" -> "Aciertos"
+                "en" -> "Hits"
+                "de" -> "Treffer"
+                "pl" -> "Trafienia"
+                else -> "Aciertos"
+            }
+
             val layout = LinearLayout(this)
             layout.orientation = LinearLayout.HORIZONTAL
             layout.setBackgroundResource(R.drawable.button_background)
             layout.setPadding(10, 10, 10, 10)
             layout.gravity = Gravity.CENTER
 
-// Establecer el tamaño de los botones (ancho fijo y alto ajustable)
             val layoutParams = LinearLayout.LayoutParams(buttonWidth, LinearLayout.LayoutParams.WRAP_CONTENT)
             layout.layoutParams = layoutParams
             layoutParams.height = (100 * resources.displayMetrics.density).toInt()
-
-// Añadir separación vertical entre los botones
             layoutParams.topMargin = (30 * resources.displayMetrics.density).toInt()
 
             val styleImageView = ImageView(this)
@@ -298,17 +376,31 @@ class HistoryActivity : AppCompatActivity() {
             textContainer.setPadding(0, -40, 0, 0)
 
             val buttonText = TextView(this)
-            buttonText.text = "$mode - $region"
+            buttonText.text = "$translatedMode - $translatedRegion"
             buttonText.setTextColor(Color.parseColor("#6F5D47"))
             buttonText.setTypeface(ResourcesCompat.getFont(this, R.font.bungee_regular))
-            buttonText.textSize = 20f
+            buttonText.textSize = 18f
             buttonText.setPadding(10, 0, 20, 0)
 
             val aciertosText = TextView(this)
-            aciertosText.text = "Aciertos: $aciertos"
+            aciertosText.text = "$aciertosTextLabel: $aciertos"
             aciertosText.setTextColor(Color.parseColor("#6F5D47"))
-            aciertosText.textSize = 18f
+            aciertosText.textSize = 16f
             aciertosText.setPadding(10, 0, 20, 0)
+
+            val aciertosParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            aciertosParams.topMargin = -40
+            aciertosText.layoutParams = aciertosParams
+
+            val textContainerParams = LinearLayout.LayoutParams(
+                0,
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                1f
+            )
+            textContainer.layoutParams = textContainerParams
 
             textContainer.addView(buttonText)
             textContainer.addView(aciertosText)
@@ -321,11 +413,11 @@ class HistoryActivity : AppCompatActivity() {
             }
 
             historyLayout.addView(layout)
-
-
         }
         cursor.close()
     }
+
+
 
     private fun getAciertosForGame(gameId: Int): Int {
         val db = dbHelper.readableDatabase

@@ -63,6 +63,8 @@
                 android:background="@drawable/button_background"
                 android:fontFamily="@font/bungee_regular"
                 android:paddingBottom="9dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
                 android:text="@string/cambiar_fondo"
                 android:textColor="#6F5D47"
                 android:textSize="18sp"

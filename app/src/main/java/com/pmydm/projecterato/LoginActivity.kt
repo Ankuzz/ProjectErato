@@ -16,10 +16,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import java.util.Locale
 
 class LoginActivity : AppCompatActivity() {
     private val GOOGLE_SIGN_IN = 100
     override fun onCreate(savedInstanceState: Bundle?) {
+        val languageCode = loadLanguagePreference()
+        setAppLocale(languageCode)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
@@ -32,6 +35,20 @@ class LoginActivity : AppCompatActivity() {
         session()
 
 
+    }
+
+    private fun setAppLocale(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+
+        val config = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
+    private fun loadLanguagePreference(): String {
+        val sharedPreferences = getSharedPreferences("prefs_file", MODE_PRIVATE)
+        return sharedPreferences.getString("language_code", Locale.getDefault().language) ?: Locale.getDefault().language
     }
 
     private fun applyBackground() {

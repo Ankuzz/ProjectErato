@@ -432,43 +432,56 @@ class ProfileActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == GALLERY_REQUEST_CODE) {
-                val selectedImageUri = data?.data
-                val selectedImageBitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
-                profileImage.setImageBitmap(selectedImageBitmap)
+            val imageBitmap: Bitmap? = when (requestCode) {
+                GALLERY_REQUEST_CODE -> {
+                    val selectedImageUri = data?.data
+                    MediaStore.Images.Media.getBitmap(contentResolver, selectedImageUri)
+                }
+                CAMERA_REQUEST_CODE -> {
+                    data?.extras?.get("data") as? Bitmap
+                }
+                else -> null
+            }
 
-                val filePath = saveImageToStorage(selectedImageBitmap)
-                saveImageToDatabase(filePath)
-            } else if (requestCode == CAMERA_REQUEST_CODE) {
-                val photo = data?.extras?.get("data") as Bitmap
-                profileImage.setImageBitmap(photo)
+            imageBitmap?.let { bitmap ->
+                profileImage.setImageBitmap(bitmap)
 
-                val filePath = saveImageToStorage(photo)
-                saveImageToDatabase(filePath)
+                val uid = FirebaseAuth.getInstance().currentUser?.uid
+                if (uid != null) {
+                    saveImageToFirebase(uid, bitmap) { imageUrl ->
+                        if (imageUrl != null) {
+                            saveImageToDatabase(imageUrl) // Guarda la URL en la BD
+                        } else {
+                            Log.e("Firebase", "Error al subir la imagen")
+                        }
+                    }
+                } else {
+                    Log.e("Firebase", "No se encontró UID del usuario")
+                }
             }
         }
     }
 
-    private fun saveImageToStorage(image: Bitmap): String {
+
+    private fun saveImageToFirebase(uid: String, image: Bitmap, onComplete: (String?) -> Unit) {
         val byteArrayOutputStream = ByteArrayOutputStream()
         image.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
         val byteArray = byteArrayOutputStream.toByteArray()
 
-        val file = ContentValues().apply {
-            put(MediaStore.Images.Media.DISPLAY_NAME, "profile_image.jpg")
-            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
-            put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/ProfileImages")
+        val storageRef = storage.reference.child("profile_images/$uid.jpg")
+
+        val uploadTask = storageRef.putBytes(byteArray)
+        uploadTask.addOnSuccessListener {
+            storageRef.downloadUrl.addOnSuccessListener { uri ->
+                onComplete(uri.toString()) // Devuelve la URL de descarga
+            }
+        }.addOnFailureListener {
+            onComplete(null) // Manejo de error
         }
-
-        val uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, file)
-
-        uri?.let {
-            contentResolver.openOutputStream(it)?.write(byteArray)
-        }
-
-        return uri.toString()
     }
+
 
     private fun saveImageToDatabase(imagePath: String) {
         val db = dbHelper.writableDatabase
